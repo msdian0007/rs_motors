@@ -8,10 +8,23 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        "dark": {
+          DEFAULT: "#000000",
+          100: ""
+        },
+        "primary": {
+          DEFAULT: "#FF2E63",
+        },
+        "secondary": {
+          DEFAULT: "#00040d",
+        },
+        "light": {
+          DEFAULT: "#EAEAEA",
+        },
+      },
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        'pattern': "url('/pattern.png')",
       },
     },
   },
