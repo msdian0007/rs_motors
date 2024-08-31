@@ -1,7 +1,6 @@
 {
   "name": "rs_motors",
   "version": "0.1.0",
-  "homepage": "https://msdian0007.github.io/rs_motors",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -10,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "gh-pages": "^6.1.1",
     "next": "14.2.7",
     "react": "^18",
     "react-dom": "^18",
