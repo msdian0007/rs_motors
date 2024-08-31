@@ -1,5 +1,5 @@
 export const vehicles: string[] = [
-    "/bmw-x.jpg",
+    "/rs_motors/bmw-x.jpg",
     "/fz.jpeg",
     "/jeep-j.jpg",
     "/jeep1.jpeg",
