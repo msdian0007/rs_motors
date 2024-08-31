@@ -10,5 +10,4 @@ export const vehicles: string[] = [
     "/splender.jpeg",
     "/mt15.png",
     "/hero.png",
-
 ]
