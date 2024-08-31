@@ -1,6 +1,7 @@
 {
   "name": "rs_motors",
   "version": "0.1.0",
+  "homepage": "https://msdian0007.github.io/rs_motors",
   "private": true,
   "scripts": {
     "dev": "next dev",
