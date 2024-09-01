@@ -1,9 +1,11 @@
-import Hero from "./hero/Hero";
-import Footer from "./layout/Footer";
 import Navbar from "./layout/Navbar";
+import Hero from "./hero";
+import Gallery from "./gallery";
+import Footer from "./layout/Footer";
 
 export {
     Navbar,
+    Hero,
+    Gallery,
     Footer,
-    Hero
 }

@@ -52,6 +52,7 @@ const Carousel = () => {
           <RightCarousel newStocks={newStocks} />
         </div>
       </div>
+      
       {/* MID */}
       <MidCarousel link={newStocks[mid]} handleManually={handleManually} />
     </div>
