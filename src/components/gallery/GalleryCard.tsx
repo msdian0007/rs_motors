@@ -1,15 +1,27 @@
-import Image from "next/image";
-import React from "react";
-import Specifications from "./Specifications";
+"use client";
 
-const MainCard = () => {
+import Image from "next/image";
+import React, { MouseEvent } from "react";
+import Specifications from "./Specifications";
+import { useRouter } from "next/navigation";
+
+const GalleryCard = () => {
+  const router = useRouter();
+  const handleProductClick = () => {
+    router.push(`rs_motors/${3}`);
+  };
   return (
-    <div className="flex flex-col md:gap-2 bg-light md:p-2 rounded-md w-[48%] h-[356px] sm:w-[275px] sm:h-[400px]">
-      <div className="w-full max-h-[175px] min-h-[175px] sm:max-h-[200px] sm:min-h-[200px] relative">
+    <div className="flex flex-col md:gap-2 bg-light md:p-2 rounded-md w-[48%] h-[356px] sm:w-[275px] sm:h-[405px]">
+      <div
+        onClick={handleProductClick}
+        className="w-full cursor-pointer max-h-[175px] min-h-[175px] sm:max-h-[200px] sm:min-h-[200px] relative"
+      >
         <Image
           src="/rs_motors/hero.png"
           alt="product_image"
+          sizes="auto"
           fill
+          priority
           className="object-contain"
         />
       </div>
@@ -26,11 +38,13 @@ const MainCard = () => {
           </div>
         </div>
         <div className="flex-center">
-          <button className="w-full py-2 rounded-md text-light bg-rose-600">Interested</button>
+          <button className="w-full py-2 rounded-md text-light bg-rose-600">
+            Interested
+          </button>
         </div>
       </div>
     </div>
   );
 };
 
-export default MainCard;
+export default GalleryCard;

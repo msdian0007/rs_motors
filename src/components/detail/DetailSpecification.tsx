@@ -4,7 +4,7 @@ import { GrSchedule } from "react-icons/gr";
 import { IoIosPeople } from "react-icons/io";
 import { PiEngine } from "react-icons/pi";
 
-const Specifications = () => {
+const DetailSpecification = () => {
   return (
     <>
       <div className="grid w-full grid-cols-4 rounded-md bg-gray-400/20 ">
@@ -55,4 +55,4 @@ const Specifications = () => {
   );
 };
 
-export default Specifications;
+export default DetailSpecification;

@@ -10,6 +10,7 @@ const LeftCarousel = ({ newStocks }: { newStocks: string[] }) => {
       {leftStock.map((ele, i) => {
         return (
           <div
+            key={i}
             className={`${
               i < mid ? "md:-mr-[75px] ml-0 md:mb-0 -mb-[55px]" : ""
             } `}

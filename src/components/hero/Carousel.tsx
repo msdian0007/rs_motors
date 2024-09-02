@@ -52,9 +52,17 @@ const Carousel = () => {
           <RightCarousel newStocks={newStocks} />
         </div>
       </div>
-      
+
       {/* MID */}
-      <MidCarousel link={newStocks[mid]} handleManually={handleManually} />
+      <div className="absolute flex flex-col items-center w-full h-full gap-6 justify-evenly">
+        <h1 className="w-full py-2 text-3xl text-center text-light bg-black/80">
+          New Stock
+        </h1>
+        <MidCarousel link={newStocks[mid]} handleManually={handleManually} />
+        <div className="items-center w-full py-2 text-xl text-center text-primary bg-black/80">
+          YAMAHA - <span className="text-white">FZ</span>
+        </div>
+      </div>
     </div>
   );
 };
