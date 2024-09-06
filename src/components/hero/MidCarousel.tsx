@@ -11,7 +11,7 @@ type MidCarouselProps = {
 const MidCarousel = ({ link, handleManually }: MidCarouselProps) => {
   const router = useRouter();
   const handleProductClick = () => {
-    router.push(`rs_motors/${3}`);
+    router.push(`details/${3}`);
   };
   return (
     <div className="grid items-center justify-center gap-10 md:flex">
@@ -21,7 +21,7 @@ const MidCarousel = ({ link, handleManually }: MidCarouselProps) => {
       />
       <div
         onClick={handleProductClick}
-        className="shadow-red__md bg-dark relative cursor-pointer hover:scale-[1.02] transition ease-in-out delay-100 duration-150 overflow-auto w-[65vw] h-[65vw] md:w-[45vw] md:h-[45vw] lg:w-[30vw] lg:h-[30vw] rounded-full "
+        className="shadow-red__md bg-light relative cursor-pointer hover:scale-[1.02] transition ease-in-out delay-100 duration-150 overflow-auto w-[65vw] h-[65vw] md:w-[45vw] md:h-[45vw] lg:w-[30vw] lg:h-[30vw] rounded-full "
       >
         <Image
           src={link}

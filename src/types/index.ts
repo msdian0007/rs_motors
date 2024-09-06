@@ -1,22 +1,32 @@
-interface Engine {
+export interface Engine {
     type: string;
     displacement?: number;
     horsepower?: number;
     torque?: number;
 }
 
-interface Vehicle {
-    name: string;
+export interface Vehicle {
     brand: string;
-    model: number;
+    modelName: string;
+    modelYear: number;
     engine: Engine;
-    fuelCapacity: number;
+    fuelCapacity?: number;
     mileage: number;
     weight?: number;
     topSpeed?: number;
     price: number;
-    offerPrice:number;
-    showroomPrice: number;
+    sellingPrice: number;
+    showroomPrice?: number;
     owner: string;
+    coverImage: string;
     images: string[];
+}
+
+export type requestOptionsType = {
+    method: string;
+    headers: {
+        "Content-Type"?: string,
+        Authorization?: string
+    }
+    body?: any
 }

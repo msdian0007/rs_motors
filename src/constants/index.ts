@@ -1,16 +1,52 @@
 export const vehicles: string[] = [
-    "/rs_motors/bmw-x.jpg",
-    "/rs_motors/fz.jpeg",
-    "/rs_motors/jeep-j.jpg",
-    "/rs_motors/jeep1.jpeg",
-    "/rs_motors/polo-car.jpg",
-    "/rs_motors/r15.jpeg",
-    "/rs_motors/range.jpeg",
-    "/rs_motors/shine.jpeg",
-    "/rs_motors/splender.jpeg",
-    "/rs_motors/mt15.png",
-    "/rs_motors/hero.png",
+    "/bmw-x.jpg",
+    "/fz.jpeg",
+    "/jeep-j.jpg",
+    "/jeep1.jpeg",
+    "/polo-car.jpg",
+    "/r15.jpeg",
+    "/range.jpeg",
+    "/shine.jpeg",
+    "/splender.jpeg",
+    "/mt15.png",
+    "/hero.png",
 ]
+
+// export const vehicles: string[] = [
+//     "/rs_motors/bmw-x.jpg",
+//     "/rs_motors/fz.jpeg",
+//     "/rs_motors/jeep-j.jpg",
+//     "/rs_motors/jeep1.jpeg",
+//     "/rs_motors/polo-car.jpg",
+//     "/rs_motors/r15.jpeg",
+//     "/rs_motors/range.jpeg",
+//     "/rs_motors/shine.jpeg",
+//     "/rs_motors/splender.jpeg",
+//     "/rs_motors/mt15.png",
+//     "/rs_motors/hero.png",
+// ]
+
+export const addNewVehicleFormInputs = {
+    brand: "",
+    modelName: "",
+    modelYear: 0,
+    engine: {
+        type: "",
+        displacement: 0,
+        horsepower: 0,
+        torque: 0,
+    },
+    fuelCapacity: 0,
+    mileage: 0,
+    weight: 0,
+    topSpeed: 0,
+    price: 0,
+    sellingPrice: 0,
+    showroomPrice: 0,
+    owner: "",
+    coverImage: "",
+    images: [""],
+}
 
 export const twoWheelers = [
     {

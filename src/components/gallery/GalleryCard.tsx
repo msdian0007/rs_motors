@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 const GalleryCard = () => {
   const router = useRouter();
   const handleProductClick = () => {
-    router.push(`rs_motors/${3}`);
+    router.push(`details/${3}`);
   };
   return (
     <div className="flex flex-col md:gap-2 bg-light md:p-2 rounded-md w-[48%] h-[356px] sm:w-[275px] sm:h-[405px]">
@@ -17,7 +17,7 @@ const GalleryCard = () => {
         className="w-full cursor-pointer max-h-[175px] min-h-[175px] sm:max-h-[200px] sm:min-h-[200px] relative"
       >
         <Image
-          src="/rs_motors/hero.png"
+          src="/hero.png"
           alt="product_image"
           sizes="auto"
           fill
