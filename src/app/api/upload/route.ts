@@ -21,8 +21,6 @@ export const config = {
     },
 };
 
-export const runtime = "experimental-edge"
-
 export async function POST(req: Request) {
     try {
         // Upload file to S3
