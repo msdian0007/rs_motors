@@ -1,8 +1,8 @@
 
 import { Vehicle } from "@/types";
 import { fetchWrapper } from "./helper";
-import { baseURL } from "./vehicle.service";
 import axios from "axios";
+import { baseURL } from "./helper/constants";
 
 export const multipartConfig = {
     headers: {

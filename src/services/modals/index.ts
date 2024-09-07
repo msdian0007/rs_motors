@@ -56,6 +56,10 @@ const vehicleSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    isSold: {
+        type: Boolean,
+        default: false,
+    },
     coverImage: {
         type: String,
         required: true

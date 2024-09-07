@@ -1,10 +1,23 @@
 "use client";
 
+import { vehicleServices } from "@/apis/vehicle.service";
 import { Gallery, Hero } from "@/components";
+import { Vehicle } from "@/types";
 import useHelper from "@/utils/useHelper";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [vehicles, setVehicles] = useState<Vehicle[]>();
+
+  useEffect(() => {
+    async function fetchData() {
+      let data = await vehicleServices.getAll();
+      console.log(data)
+      setVehicles(data);
+    }
+    fetchData();
+  }, []);
+  console.log(vehicles);
 
   const { deBouncer, scrollToGallery } = useHelper();
   const handleScroll = deBouncer(scrollToGallery, 100);

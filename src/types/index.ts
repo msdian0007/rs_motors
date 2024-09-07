@@ -6,6 +6,7 @@ export interface Engine {
 }
 
 export interface Vehicle {
+    _id?: string;
     brand: string;
     modelName: string;
     modelYear: number;
@@ -20,6 +21,11 @@ export interface Vehicle {
     owner: string;
     coverImage: string;
     images: string[];
+}
+
+export interface VehicleResponse {
+    status: string;
+    data: Vehicle[];
 }
 
 export type requestOptionsType = {

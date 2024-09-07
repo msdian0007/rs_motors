@@ -11,6 +11,17 @@ const create = async (req: Request) => {
     }
 }
 
+const getAll = async (req: Request) => {
+    try {
+        const vehicle = await vehicleModal.find({})
+        return vehicle
+
+    } catch (err) {
+        console.log(err)
+    }
+}
+
 export const vehicleControllers = {
-    create
+    create,
+    getAll,
 }

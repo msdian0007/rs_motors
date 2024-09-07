@@ -6,8 +6,7 @@ type ResponseData = {
     message: string
 }
 
-export async function POST(req: Request) {
-    const response = await vehicleControllers.create(req)
-    return Response.json({response})
-
+export async function GET(req: Request) {
+    const response = await vehicleControllers.getAll(req)
+    return Response.json(response)
 }
