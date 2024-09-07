@@ -8,7 +8,7 @@ export const dynamicParams = true;
 
 export async function generateStaticParams() {
   let data:Vehicle[] = await vehicleServices.getAll();
-  return data.map((obj) => ({
+  return data?.map((obj) => ({
     id: obj._id,
   }));
 }
