@@ -1,5 +1,5 @@
 
-import { Vehicle, VehicleResponse } from "@/types";
+import { newStock, Vehicle, VehicleResponse } from "@/types";
 import { fetchWrapper } from "./helper";
 import { BehaviorSubject } from "rxjs";
 import axios from "axios";
@@ -19,10 +19,16 @@ const getAll = async (): Promise<Vehicle[]> => {
     return response.data
 }
 
+const getNewStock = async (): Promise<newStock[]> => {
+    const response = await axios.get(`${url}/getNewStock`, jsonConfig)
+    return response.data
+}
+
 
 // EXPORT
 export const vehicleServices = {
     get userValue() { return userSubject.value() },
     addNewVehicle,
     getAll,
+    getNewStock,
 }

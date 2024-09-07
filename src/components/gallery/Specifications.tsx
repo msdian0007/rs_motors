@@ -1,10 +1,11 @@
+import { Vehicle } from "@/types";
 import React from "react";
 import { GiLifeBar } from "react-icons/gi";
 import { GrSchedule } from "react-icons/gr";
 import { IoIosPeople } from "react-icons/io";
 import { PiEngine } from "react-icons/pi";
 
-const Specifications = () => {
+const Specifications = ({ data }: { data: Vehicle }) => {
   return (
     <>
       <div className="grid w-full grid-cols-4 rounded-md bg-gray-400/20 ">
@@ -15,7 +16,9 @@ const Specifications = () => {
           <div className="text-xs md:text-sm font-sans text-green-600 ">
             Modal
           </div>
-          <div className="w-full text-xs font-semibold md:text-sm">2022</div>
+          <div className="w-full text-xs font-semibold md:text-sm">
+            {data.modelYear}
+          </div>
         </div>
       </div>
       <div className="grid w-full grid-cols-4 rounded-md bg-gray-400/20 ">
@@ -24,7 +27,9 @@ const Specifications = () => {
         </div>
         <div className="grid col-span-3 text-center">
           <div className="text-xs md:text-sm font-sans text-red-600 ">Age</div>
-          <div className="w-full text-xs font-semibold md:text-sm">2.6</div>
+          <div className="w-full text-xs font-semibold md:text-sm">
+            {data.modelYear}
+          </div>
         </div>
       </div>
       <div className="grid w-full grid-cols-4 rounded-md bg-gray-400/20 ">
@@ -47,7 +52,8 @@ const Specifications = () => {
             Owner
           </div>
           <div className="w-full text-xs font-semibold md:text-sm">
-            2<sup>nd</sup>
+            {data.owner}
+            <sup>nd</sup>
           </div>
         </div>
       </div>

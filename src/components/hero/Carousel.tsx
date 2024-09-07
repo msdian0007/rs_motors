@@ -5,10 +5,12 @@ import MidCarousel from "./MidCarousel";
 import { vehicles } from "@/constants";
 import LeftCarousel from "./LeftCarousel";
 import RightCarousel from "./RightCarousel";
+import { newStock } from "@/types";
 
-const Carousel = () => {
-  const [newStocks, setNewStocks] = useState(vehicles);
+const Carousel = ({ data }: { data: newStock[] }) => {
+  const [newStocks, setNewStocks] = useState(data);
   const [isManually, setIsManually] = useState(false);
+
 
   const handleManually = (flag: string) => {
     setIsManually(true);
@@ -35,9 +37,9 @@ const Carousel = () => {
     }
 
     return () => clearInterval(intervalId);
-  }, [vehicles.length, isManually]);
+  }, [data.length, isManually]);
 
-  let mid = Math.floor(vehicles.length / 2);
+  let mid = Math.floor(data.length / 2);
 
   return (
     <div className="relative flex-center h-full gap-[100px] w-full overflow-hidden">
@@ -58,9 +60,9 @@ const Carousel = () => {
         <h1 className="w-full py-2 text-3xl text-center text-light bg-black/80">
           New Stock
         </h1>
-        <MidCarousel link={newStocks[mid]} handleManually={handleManually} />
+        <MidCarousel link={newStocks[mid]?.coverImage} handleManually={handleManually} />
         <div className="items-center w-full py-2 text-xl text-center text-primary bg-black/80">
-          YAMAHA - <span className="text-white">FZ</span>
+          {newStocks[mid]?.brand} - <span className="text-white">{newStocks[mid]?.modelName}</span>
         </div>
       </div>
     </div>

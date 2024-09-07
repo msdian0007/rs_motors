@@ -28,6 +28,18 @@ export interface VehicleResponse {
     data: Vehicle[];
 }
 
+export interface newStock {
+    brand: string;
+    modelName: string;
+    coverImage: string;
+};
+
+export interface newStockResponse {
+    status: string;
+    data: newStock[];
+}
+
+
 export type requestOptionsType = {
     method: string;
     headers: {

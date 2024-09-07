@@ -1,7 +1,8 @@
 import React from "react";
 import SideCarousel from "./SideCarousel";
+import { newStock } from "@/types";
 
-const RightCarousel = ({ newStocks }: { newStocks: string[] }) => {
+const RightCarousel = ({ newStocks }: { newStocks: newStock[] }) => {
   let mid = Math.floor(newStocks.length / 2);
   let rightStock = newStocks.slice(mid + 1, newStocks.length);
   return (
@@ -13,7 +14,7 @@ const RightCarousel = ({ newStocks }: { newStocks: string[] }) => {
             i < newStocks.length ? "md:-ml-[75px] ml-0 md:mt-0 -mt-[55px]" : ""
           } `}
         >
-          <SideCarousel key={i} link={ele} />
+          <SideCarousel key={i} link={ele.coverImage} />
         </div>
       ))}
     </>

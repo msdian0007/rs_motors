@@ -4,8 +4,9 @@ import Image from "next/image";
 import React, { MouseEvent } from "react";
 import Specifications from "./Specifications";
 import { useRouter } from "next/navigation";
+import { Vehicle } from "@/types";
 
-const GalleryCard = () => {
+const GalleryCard = ({ data }: { data: Vehicle }) => {
   const router = useRouter();
   const handleProductClick = () => {
     router.push(`details/${3}`);
@@ -17,7 +18,7 @@ const GalleryCard = () => {
         className="w-full cursor-pointer max-h-[175px] min-h-[175px] sm:max-h-[200px] sm:min-h-[200px] relative"
       >
         <Image
-          src="/hero.png"
+          src={data.coverImage}
           alt="product_image"
           sizes="auto"
           fill
@@ -26,15 +27,17 @@ const GalleryCard = () => {
         />
       </div>
       <div className="flex flex-col h-full gap-1 mx-2 mb-2 md:gap-2">
-        <span className="font-semibold text-gray-500">Toyota-Fortuner</span>
+        <span className="font-semibold text-gray-500">
+          {data.brand}-{data.modelName}
+        </span>
         <span className="font-semibold flex flex-wrap text-black text-[16px]">
-          ₹35,00,000
-          <span className="px-2 text-gray-500 line-through">₹39,00,000</span>
+          ₹{data.sellingPrice}
+          <span className="px-2 text-gray-500 line-through">₹{data.price}</span>
           <span className="text-sm font-semibold text-green-600">24% off</span>
         </span>
         <div className="h-full flex-center ">
           <div className="grid w-full h-full grid-cols-2 gap-1 text-black md:gap-2">
-            <Specifications />
+            <Specifications data={data}/>
           </div>
         </div>
         <div className="flex-center">

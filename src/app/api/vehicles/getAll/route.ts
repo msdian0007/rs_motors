@@ -7,6 +7,6 @@ type ResponseData = {
 }
 
 export async function GET(req: Request) {
-    const response = await vehicleControllers.getAll(req)
+    const response = await vehicleControllers.getAll()
     return Response.json(response)
 }

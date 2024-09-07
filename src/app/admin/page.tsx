@@ -45,10 +45,6 @@ const Admin = () => {
       await commonServices
         .fileUploadOnS3(formData)
         .then((resp) => {
-          // setFormValue((prev: any) => ({
-          //   ...prev,
-          //   ["coverImage"]: response.data.url,
-          // }));
           setUploadCount(uploadCount + 1);
           response = resp.data.url;
         })
@@ -81,10 +77,6 @@ const Admin = () => {
       }
     }
     return urls;
-    // setFormValue((prev: any) => ({
-    //   ...prev,
-    //   ["images"]: urls,
-    // }));
   };
 
   const uploadFieldData = async (data: Vehicle) => {
@@ -100,11 +92,10 @@ const Admin = () => {
         });
     }
   };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    // const coverImageUrl = await uploadCoverImage();
-    // const imagesUrl = await uploadImages();
     if (formValue) {
       const data = {
         ...formValue,
@@ -113,9 +104,9 @@ const Admin = () => {
       };
       await uploadFieldData(data);
     }
-    console.log("All data is saved");
     setLoading(false);
   };
+  
   return (
     <>
       {loading ? (
@@ -184,7 +175,9 @@ const Admin = () => {
                 id="selectModal"
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               >
-                <option selected disabled value=''>Select Modal</option>
+                <option selected disabled value="">
+                  Select Modal
+                </option>
                 {getListOfYear().map((y) => (
                   <option key={y} value={y}>
                     {y}
@@ -207,7 +200,9 @@ const Admin = () => {
                 id="selectOwner"
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               >
-                <option selected disabled value=''>Select Owner</option>
+                <option selected disabled value="">
+                  Select Owner
+                </option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>

@@ -11,11 +11,17 @@ const create = async (req: Request) => {
     }
 }
 
-const getAll = async (req: Request) => {
+const getAll = async () => {
     try {
-        const vehicle = await vehicleModal.find({})
-        return vehicle
+        return await vehicleModal.find({})
+    } catch (err) {
+        console.log(err)
+    }
+}
 
+const getNewStock = async () => {
+    try {
+        return await vehicleModal.find({},{ coverImage: 1, brand: 1, modelName: 1 }).sort({ _id: -1 }).limit(11)
     } catch (err) {
         console.log(err)
     }
@@ -24,4 +30,5 @@ const getAll = async (req: Request) => {
 export const vehicleControllers = {
     create,
     getAll,
+    getNewStock,
 }
