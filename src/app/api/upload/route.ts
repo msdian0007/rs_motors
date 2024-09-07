@@ -19,8 +19,9 @@ export const config = {
     api: {
         bodyParser: false,
     },
-    runtime: 'experimental-edge'
 };
+
+export const runtime = "experimental-edge"
 
 export async function POST(req: Request) {
     try {
