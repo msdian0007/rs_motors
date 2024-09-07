@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { jwtMiddleware } from "./jwt-middleware";
+// import { jwtMiddleware } from "./jwt-middleware";
 
 type handlerProps = {
     get: () => void;
