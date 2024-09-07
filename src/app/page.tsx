@@ -1,11 +1,15 @@
-import { Gallery, Hero } from "@/components";
+import { Gallery, Hero, Navbar } from "@/components";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 export default async function Home() {
-
   return (
     <main className="">
+      <Navbar />
       <Hero />
-      <Gallery />
+      <Suspense fallback={<Loading />}>
+        <Gallery />
+      </Suspense>
     </main>
   );
 }

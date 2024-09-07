@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const Navbar = () => {
@@ -7,7 +8,7 @@ const Navbar = () => {
         <div className="">
           <span className="text-2xl text-primary">RS</span> Motors
         </div>
-        {/* <div className="">Sign-In</div> */}
+        <Link href={'/admin'}>Admin</Link>
       </nav>
     </header>
   );

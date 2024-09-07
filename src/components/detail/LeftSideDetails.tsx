@@ -2,8 +2,9 @@ import React from "react";
 import { GrSchedule } from "react-icons/gr";
 import { GiLifeBar } from "react-icons/gi";
 import { IoIosPeople } from "react-icons/io";
+import { Vehicle } from "@/types";
 
-const LeftSideDetails = () => {
+const LeftSideDetails = ({ data }: { data: Vehicle }) => {
   return (
     <>
       {/* MODAL */}
@@ -15,7 +16,17 @@ const LeftSideDetails = () => {
           </div>
         </div>
         <div className="col-span-3 content-center text-center text-primary text-sm font-semibold md:text-xl">
-          2022
+          {data.modelYear}
+        </div>
+      </div>
+      {/* AGE */}
+      <div className="grid grid-cols-5 rounded-md bg-light/10 md:w-1/2 w-3/5 mx-auto md:mx-0">
+        <div className=" col-span-2 text-center bg-gray-300 rounded-l-md p-1">
+          <GiLifeBar className="mx-auto text-base text-red-600 md:text-xl" />
+          <div className="text-xs  md:text-base font-sans text-dark ">Age</div>
+        </div>
+        <div className="col-span-3 content-center text-center text-primary text-sm font-semibold md:text-xl">
+          {data.modelYear}
         </div>
       </div>
       {/* OWNER */}
@@ -27,17 +38,8 @@ const LeftSideDetails = () => {
           </div>
         </div>
         <div className="col-span-3 content-center text-center text-primary text-sm font-semibold md:text-xl">
-          1<sup>st</sup>
-        </div>
-      </div>
-      {/* AGE */}
-      <div className="grid grid-cols-5 rounded-md bg-light/10 md:w-1/2 w-3/5 mx-auto md:mx-0">
-        <div className=" col-span-2 text-center bg-gray-300 rounded-l-md p-1">
-          <GiLifeBar className="mx-auto text-base text-red-600 md:text-xl" />
-          <div className="text-xs  md:text-base font-sans text-dark ">Age</div>
-        </div>
-        <div className="col-span-3 content-center text-center text-primary text-sm font-semibold md:text-2xl">
-          2.6
+          {data.owner}
+          <sup>st</sup>
         </div>
       </div>
     </>

@@ -4,6 +4,7 @@ const engineSchema = new mongoose.Schema({
     type: {
         type: String,
     },
+
     displacement: {
         type: String,
     },
@@ -27,6 +28,9 @@ const vehicleSchema = new mongoose.Schema({
     modelYear: {
         type: String,
         required: true
+    },
+    bsStage: {
+        type: String,
     },
     engine: engineSchema,
     fuelCapacity: {

@@ -9,7 +9,7 @@ import { Vehicle } from "@/types";
 const GalleryCard = ({ data }: { data: Vehicle }) => {
   const router = useRouter();
   const handleProductClick = () => {
-    router.push(`details/${3}`);
+    router.push(`details/${data._id}`);
   };
   return (
     <div className="flex flex-col md:gap-2 bg-light md:p-2 rounded-md w-[48%] h-[356px] sm:w-[275px] sm:h-[405px]">
@@ -37,7 +37,7 @@ const GalleryCard = ({ data }: { data: Vehicle }) => {
         </span>
         <div className="h-full flex-center ">
           <div className="grid w-full h-full grid-cols-2 gap-1 text-black md:gap-2">
-            <Specifications data={data}/>
+            <Specifications data={data} />
           </div>
         </div>
         <div className="flex-center">

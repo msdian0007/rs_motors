@@ -1,26 +1,29 @@
 import { vehicleServices } from "@/apis/vehicle.service";
-import { Details, DetailSpecification } from "@/components";
+import { Details } from "@/components";
 import { Vehicle } from "@/types";
-import Image from "next/image";
 import React from "react";
 
 export const revalidate = 60;
+export const dynamicParams = true;
 
-// export async function generateStaticParams() {
-//   let vehicles = await vehicleServices.getAll();
-//   return vehicles.map((vehicle) => ({
-//     id: vehicle._id,
-//   }));
-// }
+export async function generateStaticParams() {
+  let data:Vehicle[] = await vehicleServices.getAll();
+  return data.map((obj) => ({
+    id: obj._id,
+  }));
+}
 
 // { params }: { params: { slug: string } }
 
-const VehicleDetail = async () => {
-  // let vehicles = await vehicleServices.getAll();
-  // console.log(vehicles);
+const fetchVehicleDetails = async (id: string) => {
+  return await vehicleServices.getVehicleDetail(id);
+};
+
+const VehicleDetail = async ({ params }: { params: { slug: string } }) => {
+  let data = await fetchVehicleDetails(params?.slug);
   return (
     <>
-      <Details />
+      <Details data={data} />
     </>
   );
 };

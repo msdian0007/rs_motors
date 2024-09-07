@@ -8,7 +8,6 @@ const getNewStock = async () => {
 
 const Hero = async () => {
   const data = await getNewStock();
-  console.log(data)
   return (
     <div className="flex-center h-[calc(100vh-50px)]">
       <Carousel data={data} />

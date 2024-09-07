@@ -11,7 +11,6 @@ const Carousel = ({ data }: { data: newStock[] }) => {
   const [newStocks, setNewStocks] = useState(data);
   const [isManually, setIsManually] = useState(false);
 
-
   const handleManually = (flag: string) => {
     setIsManually(true);
     let temp = newStocks;
@@ -60,9 +59,12 @@ const Carousel = ({ data }: { data: newStock[] }) => {
         <h1 className="w-full py-2 text-3xl text-center text-light bg-black/80">
           New Stock
         </h1>
-        <MidCarousel link={newStocks[mid]?.coverImage} handleManually={handleManually} />
+        <div onClick={() => setIsManually(true)}>
+          <MidCarousel data={newStocks[mid]} handleManually={handleManually} />
+        </div>
         <div className="items-center w-full py-2 text-xl text-center text-primary bg-black/80">
-          {newStocks[mid]?.brand} - <span className="text-white">{newStocks[mid]?.modelName}</span>
+          {newStocks[mid]?.brand} -{" "}
+          <span className="text-white">{newStocks[mid]?.modelName}</span>
         </div>
       </div>
     </div>

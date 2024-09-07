@@ -1,27 +1,37 @@
+import { Vehicle } from "@/types";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 type ImageDetailsProps = {
-  link: string;
+  data: Vehicle;
   index: number;
-  handelNext: (index: number) => void;
+  handelNext: (flag: number) => void;
 };
 
-const ImageDetails = ({ link, index, handelNext }: ImageDetailsProps) => {
+const ImageDetails = ({ data, index }: ImageDetailsProps) => {
+  const [allImages, setAllImages] = useState([data.coverImage, ...data.images]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handelNext = (index: number) => {
+    if (index < 0 || index >= data.images?.length + 1) return; // +1 ADDED BCZ COVER-IMAGE AND IMAGES MERGED
+    setCurrentIndex(index);
+  };
   return (
     <div className="w-[100%] flex-center gap-4 md:gap-8">
       <FaAngleLeft
         className="mx-auto text-4xl cursor-pointer text-light hover:text-primary"
-        onClick={() => handelNext(index - 1)}
+        onClick={() => handelNext(currentIndex - 1)}
       />
       <div className="grid gap-6 w-full">
         <div className="flex-center">
-          <span className="font-semibold text-2xl">YAMAHA-FZ</span>
+          <span className="font-semibold text-2xl">
+            {data.brand}-{data.modelName}
+          </span>
         </div>
         <div className="h-[400px] w-full relative bg-light rounded-md">
           <Image
-            src={link}
+            src={allImages[currentIndex]}
             alt="product_image"
             sizes="auto"
             fill
@@ -30,9 +40,9 @@ const ImageDetails = ({ link, index, handelNext }: ImageDetailsProps) => {
           />
         </div>
         <div className="flex-center">
-          <span className="font-semibold text-2xl">₹35,00,000</span>
+          <span className="font-semibold text-2xl">₹{data.sellingPrice}</span>
           <span className="px-2 text-gray-500 line-through text-xl">
-            ₹39,00,000
+            ₹{data.price}
           </span>
           <span className="text-sm font-semibold bg-green-600 text-dark rounded-full  px-2">
             24% off
@@ -46,7 +56,7 @@ const ImageDetails = ({ link, index, handelNext }: ImageDetailsProps) => {
       </div>
       <FaAngleRight
         className="mx-auto text-4xl cursor-pointer text-light hover:text-primary"
-        onClick={() => handelNext(index + 1)}
+        onClick={() => handelNext(currentIndex + 1)}
       />
     </div>
   );

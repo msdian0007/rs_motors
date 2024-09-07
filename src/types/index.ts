@@ -10,6 +10,7 @@ export interface Vehicle {
     brand: string;
     modelName: string;
     modelYear: number;
+    bsStage?:string;
     engine: Engine;
     fuelCapacity?: number;
     mileage: number;
@@ -29,6 +30,7 @@ export interface VehicleResponse {
 }
 
 export interface newStock {
+    _id:string;
     brand: string;
     modelName: string;
     coverImage: string;

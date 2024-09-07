@@ -30,7 +30,6 @@ const request = (method: string) => {
 // }
 
 const handleResponse = async (response: any) => {
-    console.log(response)
     const isJson = response.headers?.get('content-type')?.includes('application/json');
     const data = isJson ? await response.json() : null;
 

@@ -3,6 +3,7 @@ import React from "react";
 import { GiLifeBar } from "react-icons/gi";
 import { GrSchedule } from "react-icons/gr";
 import { IoIosPeople } from "react-icons/io";
+import { MdOutlinePolicy } from "react-icons/md";
 import { PiEngine } from "react-icons/pi";
 
 const Specifications = ({ data }: { data: Vehicle }) => {
@@ -34,13 +35,13 @@ const Specifications = ({ data }: { data: Vehicle }) => {
       </div>
       <div className="grid w-full grid-cols-4 rounded-md bg-gray-400/20 ">
         <div className="content-center col-span-1 bg-gray-300 rounded-l-md">
-          <PiEngine className="mx-auto text-base text-gray-600 md:text-lg " />
+          <MdOutlinePolicy className="mx-auto text-base text-gray-600 md:text-lg " />
         </div>
         <div className="grid col-span-3 text-center">
           <div className="text-xs md:text-sm font-sans text-gray-600 ">
-            Engine
+            BS-Stage
           </div>
-          <div className="w-full text-xs font-semibold md:text-sm">650cc</div>
+          <div className="w-full text-xs font-semibold md:text-sm">{data?.bsStage}</div>
         </div>
       </div>
       <div className="grid w-full grid-cols-4 rounded-md bg-gray-400/20 ">

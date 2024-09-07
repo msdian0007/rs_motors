@@ -3,8 +3,10 @@
 import { commonServices } from "@/apis/common.service";
 import { vehicleServices } from "@/apis/vehicle.service";
 import { ModalLayout } from "@/components/layout/Modal";
+import { bsStages } from "@/constants";
 import { Vehicle } from "@/types";
 import useHelper from "@/utils/useHelper";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { CgSpinner } from "react-icons/cg";
 
@@ -16,6 +18,7 @@ const Admin = () => {
   const [loading, setLoading] = useState(false);
 
   const { getListOfYear } = useHelper();
+  const router = useRouter()
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -80,7 +83,6 @@ const Admin = () => {
   };
 
   const uploadFieldData = async (data: Vehicle) => {
-    console.log(data);
     if (data) {
       await vehicleServices
         .addNewVehicle(data)
@@ -105,8 +107,9 @@ const Admin = () => {
       await uploadFieldData(data);
     }
     setLoading(false);
+    router.push('/')
   };
-  
+
   return (
     <>
       {loading ? (
@@ -185,6 +188,31 @@ const Admin = () => {
                 ))}
               </select>
             </div>
+            {/* BS STAGE */}
+            <div>
+              <label
+                className="text-white dark:text-gray-200"
+                htmlFor="bsStage"
+              >
+                BS Stage
+              </label>
+              <select
+                name="bsStage"
+                value={formValue?.bsStage}
+                onChange={handleChange}
+                id="bsStage"
+                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+              >
+                <option selected disabled value="">
+                  Select BS-Stage
+                </option>
+                {bsStages.map((obj) => (
+                  <option key={obj.id} value={obj.stage}>
+                    {obj.stage}
+                  </option>
+                ))}
+              </select>
+            </div>
             {/* OWNER */}
             <div>
               <label
@@ -257,7 +285,6 @@ const Admin = () => {
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               />
             </div>
-            <div></div>
             {/* COVER IMAGE */}
             <div>
               <label className="block text-sm font-medium text-white">

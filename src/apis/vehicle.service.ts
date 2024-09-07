@@ -15,7 +15,12 @@ const addNewVehicle = async (vehicle: Vehicle) => {
 }
 
 const getAll = async (): Promise<Vehicle[]> => {
-    const response = await axios.get(`${url}/getAll`, jsonConfig)
+    const response = await axios.get(`${url}/`, jsonConfig)
+    return response.data
+}
+
+const getVehicleDetail = async (id: string): Promise<Vehicle> => {
+    const response = await axios.get(`${url}/${id}`)
     return response.data
 }
 
@@ -31,4 +36,5 @@ export const vehicleServices = {
     addNewVehicle,
     getAll,
     getNewStock,
+    getVehicleDetail,
 }

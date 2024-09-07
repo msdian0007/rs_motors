@@ -1,17 +1,18 @@
+import { newStock } from "@/types";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 type MidCarouselProps = {
-  link: string;
+  data: newStock;
   handleManually: (flag: string) => void;
 };
 
-const MidCarousel = ({ link, handleManually }: MidCarouselProps) => {
+const MidCarousel = ({ data, handleManually }: MidCarouselProps) => {
   const router = useRouter();
   const handleProductClick = () => {
-    router.push(`details/${3}`);
+    router.push(`details/${data._id}`);
   };
   return (
     <div className="grid items-center justify-center gap-10 md:flex">
@@ -24,7 +25,7 @@ const MidCarousel = ({ link, handleManually }: MidCarouselProps) => {
         className="shadow-red__md bg-light relative cursor-pointer hover:scale-[1.02] transition ease-in-out delay-100 duration-150 overflow-auto w-[65vw] h-[65vw] md:w-[45vw] md:h-[45vw] lg:w-[30vw] lg:h-[30vw] rounded-full "
       >
         <Image
-          src={link}
+          src={data.coverImage}
           sizes="auto"
           fill
           priority

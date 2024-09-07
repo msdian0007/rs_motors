@@ -19,7 +19,7 @@ const Gallery = () => {
     fetchData();
   }, []);
 
-  const handleScroll = deBouncer(scrollToGallery, 100);
+  const handleScroll = deBouncer(scrollToGallery, 50);
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {

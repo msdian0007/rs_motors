@@ -26,6 +26,25 @@ export const vehicles: string[] = [
 //     "/rs_motors/hero.png",
 // ]
 
+export const bsStages = [
+    {
+        id: 1,
+        stage: "BS-2"
+    },
+    {
+        id: 2,
+        stage: "BS-3"
+    },
+    {
+        id: 3,
+        stage: "BS-4"
+    },
+    {
+        id: 4,
+        stage: "BS-6"
+    },
+]
+
 export const addNewVehicleFormInputs = {
     brand: "",
     modelName: "",
