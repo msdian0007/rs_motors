@@ -13,12 +13,12 @@ const fetchVehicleDetails = async (id: string) => {
   return await getVehicleDetail(id);
 };
 
-export async function generateStaticParams() {
-  let data = await getAll();
-  return data.map((obj) => {
-    id: obj._id;
-  });
-}
+// export async function generateStaticParams() {
+//   let data = await getAll();
+//   return data.map((obj) => {
+//     id: obj._id;
+//   });
+// }
 
 // { params }: { params: { slug: string } }
 
