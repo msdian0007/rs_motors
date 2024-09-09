@@ -1,11 +1,11 @@
 "use client";
 
-import { commonServices } from "@/apis/common.service";
-import { vehicleServices } from "@/apis/vehicle.service";
 import { ModalLayout } from "@/components/layout/Modal";
 import { bsStages } from "@/constants";
 import { Vehicle } from "@/types";
+import { fileUploadOnS3 } from "@/utils/commonServices";
 import useHelper from "@/utils/useHelper";
+import { addNewVehicle } from "@/utils/vehicleServices";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { CgSpinner } from "react-icons/cg";
@@ -18,7 +18,7 @@ const Admin = () => {
   const [loading, setLoading] = useState(false);
 
   const { getListOfYear } = useHelper();
-  const router = useRouter()
+  const router = useRouter();
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -45,8 +45,7 @@ const Admin = () => {
     let response = "";
     if (coverImage instanceof File) {
       formData.append("file", coverImage);
-      await commonServices
-        .fileUploadOnS3(formData)
+      await fileUploadOnS3(formData)
         .then((resp) => {
           setUploadCount(uploadCount + 1);
           response = resp.data.url;
@@ -68,8 +67,7 @@ const Admin = () => {
         }
         const formData = new FormData();
         formData.append(`file`, images[index]);
-        await commonServices
-          .fileUploadOnS3(formData)
+        await fileUploadOnS3(formData)
           .then((response) => {
             urls.push(response.data.url);
             setUploadCount((prev) => prev + 1);
@@ -84,8 +82,7 @@ const Admin = () => {
 
   const uploadFieldData = async (data: Vehicle) => {
     if (data) {
-      await vehicleServices
-        .addNewVehicle(data)
+      await addNewVehicle(data)
         .then((response) => {
           setUploadCount(uploadCount + 1);
         })
@@ -107,7 +104,7 @@ const Admin = () => {
       await uploadFieldData(data);
     }
     setLoading(false);
-    router.push('/')
+    router.push("/");
   };
 
   return (
