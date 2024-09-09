@@ -1,5 +1,5 @@
 
-export const baseURL = process.env.BASE_URL || 'http://localhost:3000/api'
+export const baseURL = process.env.NODE_ENV === 'development' ? 'http://localhost:3000/api' : process.env.BASE_URL
 
 export const multipartConfig = {
     headers: {
