@@ -1,13 +1,13 @@
 import React from "react";
 import Carousel from "./Carousel";
-import { vehicleServices } from "@/apis/vehicle.service";
+import { getNewStock } from "@/utils/vehicleServices";
 
-const getNewStock = async () => {
-  return await vehicleServices.getNewStock();
+const fetchNewStock = async () => {
+  return await getNewStock()
 };
 
 const Hero = async () => {
-  const data = await getNewStock();
+  const data = await fetchNewStock();
   return (
     <div className="flex-center h-[calc(100vh-50px)]">
       <Carousel data={data} />

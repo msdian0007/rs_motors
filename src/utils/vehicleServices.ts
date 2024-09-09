@@ -1,6 +1,6 @@
 import { jsonConfig } from "@/apis/common.service"
 import { baseURL } from "@/apis/helper/constants"
-import { Vehicle } from "@/types"
+import { newStock, Vehicle } from "@/types"
 import axios from "axios"
 
 const url = `${baseURL}/vehicles`
@@ -15,4 +15,9 @@ const getVehicleDetail = async (id: string): Promise<Vehicle> => {
     return response.data
 }
 
-export { getAll, getVehicleDetail }
+const getNewStock = async (): Promise<newStock[]> => {
+    const response = await axios.get(`${url}/getNewStock`, jsonConfig)
+    return response.data
+}
+
+export { getAll, getVehicleDetail, getNewStock }
