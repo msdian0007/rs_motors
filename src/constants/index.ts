@@ -1,5 +1,7 @@
 
-export const baseURL = process.env.NODE_ENV === 'development' ? 'http://localhost:3000/api' : process.env.BASE_URL
+export const baseURL = process.env.NODE_ENV === 'development'
+    ? 'http://localhost:3000/api'
+    : 'https://rs-motors.vercel.app/api'
 
 export const multipartConfig = {
     headers: {
