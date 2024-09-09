@@ -28,6 +28,21 @@ const useHelper = () => {
       }
       return years;
     },
+    ageCalculator: (year: number) => {
+      const currentYear = new Date().getFullYear();
+      return currentYear - year;
+    },
+    getOwnerSup: (val: string) => {
+      if (val == "1") {
+        return "st";
+      } else if (val == "2") {
+        return "nd";
+      } else if (val == "3") {
+        return "rd";
+      } else {
+        return "th";
+      }
+    },
   };
 };
 

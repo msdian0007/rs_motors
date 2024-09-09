@@ -3,8 +3,10 @@ import { GrSchedule } from "react-icons/gr";
 import { GiLifeBar } from "react-icons/gi";
 import { IoIosPeople } from "react-icons/io";
 import { Vehicle } from "@/types";
+import useHelper from "@/hooks/useHelper";
 
 const LeftSideDetails = ({ data }: { data: Vehicle }) => {
+  const { ageCalculator, getOwnerSup } = useHelper();
   return (
     <>
       {/* MODAL */}
@@ -26,7 +28,8 @@ const LeftSideDetails = ({ data }: { data: Vehicle }) => {
           <div className="text-xs  md:text-base font-sans text-dark ">Age</div>
         </div>
         <div className="col-span-3 content-center text-center text-primary text-sm font-semibold md:text-xl">
-          {data.modelYear}
+          {ageCalculator(data.modelYear)}{" "}
+          <span className="text-light">year</span>
         </div>
       </div>
       {/* OWNER */}
@@ -39,7 +42,7 @@ const LeftSideDetails = ({ data }: { data: Vehicle }) => {
         </div>
         <div className="col-span-3 content-center text-center text-primary text-sm font-semibold md:text-xl">
           {data.owner}
-          <sup>st</sup>
+          <sup className="text-light">{getOwnerSup(data.owner)}</sup>
         </div>
       </div>
     </>

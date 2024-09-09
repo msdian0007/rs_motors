@@ -4,7 +4,7 @@ import { ModalLayout } from "@/components/layout/Modal";
 import { bsStages } from "@/constants";
 import { Vehicle } from "@/types";
 import { fileUploadOnS3 } from "@/utils/commonServices";
-import useHelper from "@/utils/useHelper";
+import useHelper from "@/hooks/useHelper";
 import { addNewVehicle } from "@/utils/vehicleServices";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import GalleryCard from "./GalleryCard";
-import useHelper from "@/utils/useHelper";
+import useHelper from "@/hooks/useHelper";
 import { Vehicle } from "@/types";
 import { getAll } from "@/utils/vehicleServices";
 

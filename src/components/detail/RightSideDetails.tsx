@@ -9,7 +9,7 @@ const RightSideDetails = ({ data }: { data: Vehicle }) => {
     <>
       <div className="grid grid-cols-5 rounded-md bg-light/10 md:w-1/2 w-3/5 mx-auto md:mx-0">
         <div className="col-span-3 content-center text-center text-primary text-sm font-semibold md:text-xl">
-          655-CC
+          Petrol
         </div>
         <div className=" col-span-2 text-center bg-gray-300 rounded-r-md p-1">
           <PiEngine className="mx-auto text-base text-dark md:text-2xl " />
@@ -31,7 +31,7 @@ const RightSideDetails = ({ data }: { data: Vehicle }) => {
       </div>
       <div className="grid grid-cols-5 rounded-md bg-light/10 md:w-1/2 w-3/5 mx-auto md:mx-0">
         <div className="col-span-3 content-center text-center text-primary text-sm font-semibold md:text-xl">
-          {data.mileage} kmpl
+          {data.mileage} <span className="text-light">kmpl</span>
         </div>
         <div className=" col-span-2 text-center bg-gray-300 rounded-r-md p-1">
           <BsFuelPump className="mx-auto text-base text-green-600 md:text-2xl " />
