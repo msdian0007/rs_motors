@@ -9,7 +9,7 @@ const url = `${baseURL}/vehicles`
 const getAll = async (): Promise<Vehicle[]> => {
     await dbConnect()
     const response = await axios.get(`${url}/`, jsonConfig)
-    return response.data
+    return JSON.parse(response.data)
 }
 
 const getVehicleDetail = async (id: string): Promise<Vehicle> => {
@@ -21,7 +21,7 @@ const getVehicleDetail = async (id: string): Promise<Vehicle> => {
 const getNewStock = async (): Promise<newStock[]> => {
     await dbConnect()
     const response = await axios.get(`${url}/getNewStock`, jsonConfig)
-    return response.data
+    return JSON.parse(response.data)
 }
 
 export { getAll, getVehicleDetail, getNewStock }
