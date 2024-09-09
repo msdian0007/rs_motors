@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import MidCarousel from "./MidCarousel";
-import { vehicles } from "@/constants";
 import LeftCarousel from "./LeftCarousel";
 import RightCarousel from "./RightCarousel";
 import { newStock } from "@/types";

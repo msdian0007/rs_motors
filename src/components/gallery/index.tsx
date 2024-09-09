@@ -4,18 +4,17 @@ import React, { useEffect, useState } from "react";
 import GalleryCard from "./GalleryCard";
 import useHelper from "@/utils/useHelper";
 import { Vehicle } from "@/types";
-import { vehicleServices } from "@/apis/vehicle.service";
 import { getAll } from "@/utils/vehicleServices";
 
 const Gallery = () => {
-  const [data, setData] = useState<Vehicle[]>();
+  const [data, setData] = useState<Vehicle[]>([]);
 
   const { deBouncer, scrollToGallery } = useHelper();
 
   useEffect(() => {
     async function fetchData() {
       // let data = await vehicleServices.getAll();
-      let data = await getAll()
+      let data = await getAll();
       setData(data);
     }
     fetchData();
@@ -33,7 +32,7 @@ const Gallery = () => {
     <div className="min-h-[100vh] md:p-8" id="gallery">
       <div className="flex flex-wrap justify-center gap-1 md:gap-4">
         {/* CARD */}
-        {data && data.map((v) => <GalleryCard data={v} />)}
+        {data.length > 0 && data.map((v) => <GalleryCard data={v} />)}
       </div>
     </div>
   );
