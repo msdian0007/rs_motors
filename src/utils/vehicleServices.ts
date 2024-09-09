@@ -15,7 +15,7 @@ const getAll = async (): Promise<Vehicle[]> => {
 const getVehicleDetail = async (id: string): Promise<Vehicle> => {
     await dbConnect()
     const response = await axios.get(`${url}/${id}`)
-    return response.data
+    return JSON.parse(response.data)
 }
 
 const getNewStock = async (): Promise<newStock[]> => {
