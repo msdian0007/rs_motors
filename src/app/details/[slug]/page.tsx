@@ -6,6 +6,10 @@ import React from "react";
 export const revalidate = 60;
 export const dynamicParams = true;
 
+const fetchVehicleDetails = async (id: string) => {
+  return await vehicleServices.getVehicleDetail(id);
+};
+
 export async function generateStaticParams() {
   let data = await vehicleServices.getAll();
   return data?.map((obj) => ({
@@ -15,9 +19,6 @@ export async function generateStaticParams() {
 
 // { params }: { params: { slug: string } }
 
-const fetchVehicleDetails = async (id: string) => {
-  return await vehicleServices.getVehicleDetail(id);
-};
 
 const VehicleDetail = async ({ params }: { params: { slug: string } }) => {
   let data = await fetchVehicleDetails(params?.slug);
