@@ -1,6 +1,3 @@
-
-import { Vehicle } from "@/types";
-import { fetchWrapper } from "./helper";
 import axios from "axios";
 import { baseURL } from "./helper/constants";
 
@@ -17,7 +14,6 @@ export const jsonConfig = {
 };
 
 const fileUploadOnS3 = async (file: FormData) => {
-    // return await fetchWrapper.post(`${baseURL}/upload`, file)
     return await axios.post(`${baseURL}/upload`, file, multipartConfig)
 }
 

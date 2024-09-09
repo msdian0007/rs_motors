@@ -1,9 +1,8 @@
 
-import { newStock, Vehicle, VehicleResponse } from "@/types";
-import { fetchWrapper } from "./helper";
+import { newStock, Vehicle } from "@/types";
 import { BehaviorSubject } from "rxjs";
 import axios from "axios";
-import { jsonConfig, multipartConfig } from "./common.service";
+import { jsonConfig } from "./common.service";
 import { baseURL } from "./helper/constants";
 
 const url = `${baseURL}/vehicles`
@@ -11,7 +10,8 @@ const userSubject = new BehaviorSubject(typeof window !== 'undefined' && JSON.pa
 
 
 const addNewVehicle = async (vehicle: Vehicle) => {
-    return await fetchWrapper.post(`${url}/addNewVehicle`, vehicle)
+    // return await fetchWrapper.post(`${url}/addNewVehicle`, vehicle)
+    return await axios.post(`${url}/`, vehicle, jsonConfig)
 }
 
 const getAll = async (): Promise<Vehicle[]> => {
