@@ -7,19 +7,16 @@ import axios from "axios"
 const url = `${baseURL}/vehicles`
 
 const getAll = async (): Promise<Vehicle[]> => {
-    await dbConnect()
     const response = await axios.get(`${url}/`, jsonConfig)
     return JSON.parse(response.data)
 }
 
 const getVehicleDetail = async (id: string): Promise<Vehicle> => {
-    await dbConnect()
     const response = await axios.get(`${url}/${id}`)
     return JSON.parse(response.data)
 }
 
 const getNewStock = async (): Promise<newStock[]> => {
-    await dbConnect()
     const response = await axios.get(`${url}/getNewStock`, jsonConfig)
     return JSON.parse(response.data)
 }

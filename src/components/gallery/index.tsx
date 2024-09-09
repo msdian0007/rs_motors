@@ -5,6 +5,7 @@ import GalleryCard from "./GalleryCard";
 import useHelper from "@/utils/useHelper";
 import { Vehicle } from "@/types";
 import { vehicleServices } from "@/apis/vehicle.service";
+import { getAll } from "@/utils/vehicleServices";
 
 const Gallery = () => {
   const [data, setData] = useState<Vehicle[]>();
@@ -13,7 +14,8 @@ const Gallery = () => {
 
   useEffect(() => {
     async function fetchData() {
-      let data = await vehicleServices.getAll();
+      // let data = await vehicleServices.getAll();
+      let data = await getAll()
       setData(data);
     }
     fetchData();
