@@ -62,8 +62,7 @@ const Carousel = ({ data }: { data: newStock[] }) => {
           <MidCarousel data={newStocks[mid]} handleManually={handleManually} />
         </div>
         <div className="items-center w-full py-2 text-xl text-center text-primary bg-black/80">
-          {newStocks[mid]?.brand} -{" "}
-          <span className="text-white">{newStocks[mid]?.modelName}</span>
+          {newStocks[mid]?.brand.toUpperCase()} - <span className="text-white"> {newStocks[mid]?.modelName}</span>
         </div>
       </div>
     </div>

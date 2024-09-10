@@ -1,3 +1,4 @@
+import useHelper from "@/hooks/useHelper";
 import { Vehicle } from "@/types";
 import Image from "next/image";
 import React, { useState } from "react";
@@ -12,6 +13,8 @@ type ImageDetailsProps = {
 const ImageDetails = ({ data, index }: ImageDetailsProps) => {
   const [allImages, setAllImages] = useState([data.coverImage, ...data.images]);
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  const { calcDiscount } = useHelper();
 
   const handelNext = (index: number) => {
     if (index < 0 || index >= data.images?.length + 1) return; // +1 ADDED BCZ COVER-IMAGE AND IMAGES MERGED
@@ -40,12 +43,14 @@ const ImageDetails = ({ data, index }: ImageDetailsProps) => {
           />
         </div>
         <div className="flex-center">
-          <span className="font-semibold text-2xl">₹{data.sellingPrice}</span>
+          <span className="font-semibold text-2xl">
+            ₹{data.sellingPrice.toLocaleString()}
+          </span>
           <span className="px-2 text-gray-500 line-through text-xl">
-            ₹{data.price}
+            ₹{data.price.toLocaleString()}
           </span>
           <span className="text-sm font-semibold bg-green-600 text-dark rounded-full  px-2">
-            24% off
+            {calcDiscount(data.price, data.sellingPrice)}% off
           </span>
         </div>
         <div className="flex-center">

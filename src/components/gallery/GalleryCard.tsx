@@ -5,8 +5,10 @@ import React, { MouseEvent } from "react";
 import Specifications from "./Specifications";
 import { useRouter } from "next/navigation";
 import { Vehicle } from "@/types";
+import useHelper from "@/hooks/useHelper";
 
 const GalleryCard = ({ data }: { data: Vehicle }) => {
+  const {calcDiscount} = useHelper()
   const router = useRouter();
   const handleProductClick = () => {
     router.push(`details/${data._id}`);
@@ -31,9 +33,9 @@ const GalleryCard = ({ data }: { data: Vehicle }) => {
           {data.brand}-{data.modelName}
         </span>
         <span className="font-semibold flex flex-wrap text-black text-[16px]">
-          ₹{data.sellingPrice}
-          <span className="px-2 text-gray-500 line-through">₹{data.price}</span>
-          <span className="text-sm font-semibold text-green-600">24% off</span>
+          ₹{data.sellingPrice.toLocaleString()}
+          <span className="px-2 text-gray-500 line-through">₹{data.price.toLocaleString()}</span>
+          <span className="text-sm font-semibold text-green-600">{calcDiscount(data.price, data.sellingPrice)}% off</span>
         </span>
         <div className="h-full flex-center ">
           <div className="grid w-full h-full grid-cols-2 gap-1 text-black md:gap-2">

@@ -1,7 +1,9 @@
+import { getSession, logout } from "@/actions";
 import Link from "next/link";
 import React from "react";
 
-const Navbar = () => {
+const Navbar = async () => {
+  const session = await getSession();
   return (
     <header>
       <nav className="text-light flex-between bg-secondary padding-x min-h-[50px]">
@@ -19,7 +21,13 @@ const Navbar = () => {
             Sold
           </Link>
         </div>
-        <Link href={"/"}>Logout</Link>
+        {session.isLoggedIn && (
+          <form action={logout}>
+            <button type="submit" className="cursor-pointer">
+              Logout
+            </button>
+          </form>
+        )}
       </nav>
     </header>
   );

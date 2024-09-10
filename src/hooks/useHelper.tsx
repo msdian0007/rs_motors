@@ -43,6 +43,9 @@ const useHelper = () => {
         return "th";
       }
     },
+    calcDiscount: (p: number, sp: number) => {
+      return Math.floor(p / (p - sp));
+    },
   };
 };
 

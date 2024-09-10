@@ -29,7 +29,7 @@ const LeftSideDetails = ({ data }: { data: Vehicle }) => {
         </div>
         <div className="col-span-3 content-center text-center text-primary text-sm font-semibold md:text-xl">
           {ageCalculator(data.modelYear)}{" "}
-          <span className="text-light">year</span>
+          <span className="text-light text-sm md:text-base">year</span>
         </div>
       </div>
       {/* OWNER */}

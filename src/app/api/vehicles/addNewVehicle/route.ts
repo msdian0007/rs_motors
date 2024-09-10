@@ -8,7 +8,6 @@ export async function POST(req: Request,) {
     try {
         await dbConnect()
         const body = await req.json()
-        console.log(body)
         const vehicle = new vehicleModal(body)
         await vehicle.save()
         return Response.json({ message: 'Data received' })
