@@ -14,12 +14,12 @@ const Navbar = async () => {
           <Link className="hover:text-primary" href={"/admin"}>
             Dashboard
           </Link>
-          <Link className="hover:text-primary" href={"/admin"}>
+          <Link className="hover:text-primary" href={"/admin/addNew"}>
             Add-New
           </Link>
-          <Link className="hover:text-primary" href={"/admin"}>
+          {/* <Link className="hover:text-primary" href={"/admin"}>
             Sold
-          </Link>
+          </Link> */}
         </div>
         {session.isLoggedIn && (
           <form action={logout}>

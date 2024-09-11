@@ -23,4 +23,16 @@ const getNewStock = async (): Promise<newStock[]> => {
     return response.data.data
 }
 
-export { getAll, getVehicleDetail, getNewStock, addNewVehicle }
+// const allVehicleTable = async () => {
+//     const response = await axios.get(
+//         `${baseURL}/vehicles/pagination?${qs.stringify(
+//           getRandomUserParams(tableParams)
+//         )}`
+//       );
+// }
+
+const markSoldUnsold = async (id: string) => {
+    return await axios.put(`${url}/markSoldUnsold`, { id }, jsonConfig)
+}
+
+export { getAll, getVehicleDetail, getNewStock, addNewVehicle, markSoldUnsold }

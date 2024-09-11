@@ -4,6 +4,13 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --dark: #000000;
+  --primary: #ff2e63;
+  --secondary: #00040d;
+  --light: #eaeaea;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -12,7 +19,6 @@
   font-weight: 400;
   font-style: normal;
   font-size: 14px;
-  
 }
 
 body {
@@ -39,13 +45,34 @@ body {
   box-shadow: rgb(170, 168, 168) 0px 0px 1.3rem -0.5rem;
 }
 
-.shadow-red__md{
+.shadow-red__md {
   box-shadow: rgb(185, 30, 30) 0px 0px 3rem -0.6rem;
 }
 
-.shadow-red__text{
+.shadow-red__text {
   text-shadow: rgb(223, 10, 10) 0px 0px 1rem;
 }
-.shadow-white__text{
+.shadow-white__text {
   text-shadow: 0px 0px 8px #ffff;
+}
+
+/* TOGGLE DARK MODE IN ANT DESIGN TABLE  */
+.ant-table-tbody {
+  background-color: var(--secondary);
+  color: var(--light);
+}
+.ant-table-tbody .ant-table-row:hover .ant-table-cell{
+  background-color: var(--secondary);
+  color: var(--primary);
+}
+
+
+/* HIDE SCROLL-BAR */
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
 }

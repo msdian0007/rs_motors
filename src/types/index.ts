@@ -20,6 +20,7 @@ export interface Vehicle {
     sellingPrice: number;
     showroomPrice?: number;
     owner: string;
+    isSold?:boolean;
     coverImage: string;
     images: string[];
 }
