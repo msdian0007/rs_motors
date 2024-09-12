@@ -1,8 +1,11 @@
+"use client"
+
 import useHelper from "@/hooks/useHelper";
 import { Vehicle } from "@/types";
 import Image from "next/image";
-import React, { useState } from "react";
-import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
+import { FaAngleLeft, FaAngleRight, FaCheckCircle } from "react-icons/fa";
 
 type ImageDetailsProps = {
   data: Vehicle;
@@ -11,14 +14,32 @@ type ImageDetailsProps = {
 };
 
 const ImageDetails = ({ data, index }: ImageDetailsProps) => {
+
+  const [interested, setInterested] = useState("");
   const [allImages, setAllImages] = useState([data.coverImage, ...data.images]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isClient, setIsClient] = useState(false)
+ 
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+ 
+  const router = useRouter();
 
-  const { calcDiscount } = useHelper();
+  const { calcDiscount, updateIsInterested, isAlreadyInterested } = useHelper();
 
   const handelNext = (index: number) => {
     if (index < 0 || index >= data.images?.length + 1) return; // +1 ADDED BCZ COVER-IMAGE AND IMAGES MERGED
     setCurrentIndex(index);
+  };
+
+  const handleIsInterested = async (id: string) => {
+    const response = await updateIsInterested(id);
+    if (response) {
+      setInterested(id);
+    } else {
+      router.push(`/userRgister/${id}`);
+    }
   };
   return (
     <div className="w-[100%] flex-center gap-4 md:gap-8">
@@ -54,9 +75,21 @@ const ImageDetails = ({ data, index }: ImageDetailsProps) => {
           </span>
         </div>
         <div className="flex-center">
-          <button className="md:w-full w-1/2 py-2 rounded-md text-light bg-rose-600">
-            Interested
-          </button>
+          {isClient && interested === data._id || isAlreadyInterested(data?._id ?? " ") ? (
+            <button
+              disabled
+              className="w-full py-2 rounded-md text-light bg-green-600 flex-center"
+            >
+              <FaCheckCircle className="text-2xl"/>
+            </button>
+          ) : (
+            <button
+              onClick={() => handleIsInterested(data?._id ?? "")}
+              className="w-full py-2 rounded-md text-light bg-rose-600"
+            >
+              Interested
+            </button>
+          )}
         </div>
       </div>
       <FaAngleRight

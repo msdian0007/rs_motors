@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import LeftSideDetails from "./LeftSideDetails";
 import RightSideDetails from "./RightSideDetails";
 import ImageDetails from "./ImageDetails";
-import { vehicles } from "@/constants";
 import BottomDetails from "./BottomDetails";
 import { Vehicle } from "@/types";
 

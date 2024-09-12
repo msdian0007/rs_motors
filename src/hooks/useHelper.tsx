@@ -1,3 +1,6 @@
+import { baseURL } from "@/constants";
+import { User } from "@/types";
+import { customerInterestNotification } from "@/utils/commonServices";
 import React from "react";
 
 const useHelper = () => {
@@ -45,6 +48,56 @@ const useHelper = () => {
     },
     calcDiscount: (p: number, sp: number) => {
       return Math.floor(p / (p - sp));
+    },
+    isUserDataAvailable: async () => {
+      const user = localStorage.getItem("rs_motors_user");
+      if (user) {
+        return JSON.parse(user);
+      }
+      return false;
+    },
+    updateIsInterested: async (id: string) => {
+      const { isUserDataAvailable, updateInterestList } = useHelper();
+      let user = await isUserDataAvailable();
+      if (user) {
+        const response = await customerInterestNotification({
+          name: user?.name,
+          phoneNumber: user?.phoneNumber,
+          productLink: `${baseURL}/details/${id}`,
+        });
+        if (response.status === 200) {
+          updateInterestList(id);
+          return true;
+        }
+        return true;
+      } else {
+        return false;
+      }
+    },
+    setUserData: (data: User) => {
+      localStorage.setItem("rs_motors_user", JSON.stringify(data));
+    },
+    updateInterestList: (id: string) => {
+      let list = localStorage.getItem("list_of_interest");
+      if (list) {
+        let strList: [string] = JSON.parse(list);
+        strList.push(id);
+        localStorage.setItem("list_of_interest", JSON.stringify(strList));
+      } else {
+        localStorage.setItem("list_of_interest", JSON.stringify([id]));
+      }
+    },
+    isAlreadyInterested: (id: string) => {
+      const ISSERVER = typeof window === "undefined";
+      if (!ISSERVER) {
+        let list = localStorage.getItem("list_of_interest");
+        if (list) {
+          let strList: [string] = JSON.parse(list);
+          return strList.includes(id);
+        } else {
+          return false;
+        }
+      }
     },
   };
 };

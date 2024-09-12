@@ -12,6 +12,8 @@ import useHelper from "@/hooks/useHelper";
 import Dropdown from "antd/es/dropdown/dropdown";
 import { CiMenuKebab } from "react-icons/ci";
 import { markSoldUnsold } from "@/utils/vehicleServices";
+import { ModalLayout } from "../layout/Modal";
+import { SpinnerLg } from "../common/Spinner";
 
 // const dataSource = [
 //   {
@@ -181,19 +183,25 @@ const AllVehicleTable = () => {
   ]);
   return (
     <>
-      <div className="px-1 pt-6 md:px-4 overflow-auto">
-        <Table
-          // components={components}
-          // rowClassName={() => "editable-row"}
-          // bordered
-          // rowKey={(record) => record?._id}
-          dataSource={data}
-          columns={columns}
-          pagination={tableParams.pagination}
-          loading={loading}
-          onChange={handleTableChange}
-        />
-      </div>
+      {loading ? (
+        <ModalLayout>
+          <SpinnerLg />
+        </ModalLayout>
+      ) : (
+        <div className="px-1 pt-6 md:px-4 overflow-auto">
+          <Table
+            // components={components}
+            // rowClassName={() => "editable-row"}
+            // bordered
+            // rowKey={(record) => record?._id}
+            dataSource={data}
+            columns={columns}
+            pagination={tableParams.pagination}
+            loading={loading}
+            onChange={handleTableChange}
+          />
+        </div>
+      )}
     </>
   );
 };

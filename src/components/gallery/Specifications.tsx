@@ -14,10 +14,10 @@ const Specifications = ({ data }: { data: Vehicle }) => {
           <GrSchedule className="mx-auto text-base text-green-600 md:text-lg " />
         </div>
         <div className="grid col-span-3 text-center">
-          <div className="text-xs md:text-sm font-sans text-green-600 ">
+          <div className="text-xs my-auto md:text-sm font-sans text-green-600 ">
             Modal
           </div>
-          <div className="w-full text-xs font-semibold md:text-sm">
+          <div className="w-full my-auto text-xs font-semibold md:text-sm">
             {data.modelYear}
           </div>
         </div>
@@ -27,8 +27,8 @@ const Specifications = ({ data }: { data: Vehicle }) => {
           <GiLifeBar className="mx-auto text-base text-red-600 md:text-lg " />
         </div>
         <div className="grid col-span-3 text-center">
-          <div className="text-xs md:text-sm font-sans text-red-600 ">Age</div>
-          <div className="w-full text-xs font-semibold md:text-sm">
+          <div className="text-xs my-auto md:text-sm font-sans text-red-600 ">Age</div>
+          <div className="w-full my-auto text-xs font-semibold md:text-sm">
             {data.modelYear}
           </div>
         </div>
@@ -38,10 +38,10 @@ const Specifications = ({ data }: { data: Vehicle }) => {
           <MdOutlinePolicy className="mx-auto text-base text-gray-600 md:text-lg " />
         </div>
         <div className="grid col-span-3 text-center">
-          <div className="text-xs md:text-sm font-sans text-gray-600 ">
+          <div className="text-xs my-auto md:text-sm font-sans text-gray-600 ">
             BS-Stage
           </div>
-          <div className="w-full text-xs font-semibold md:text-sm">{data?.bsStage}</div>
+          <div className="w-full my-auto text-xs font-semibold md:text-sm">{data?.bsStage}</div>
         </div>
       </div>
       <div className="grid w-full grid-cols-4 rounded-md bg-gray-400/20 ">
@@ -49,10 +49,10 @@ const Specifications = ({ data }: { data: Vehicle }) => {
           <IoIosPeople className="mx-auto text-base text-blue-600 md:text-lg " />
         </div>
         <div className="grid col-span-3 text-center">
-          <div className="text-xs md:text-sm font-sans text-blue-600 ">
+          <div className="text-xs my-auto md:text-sm font-sans text-blue-600 ">
             Owner
           </div>
-          <div className="w-full text-xs font-semibold md:text-sm">
+          <div className="w-full my-auto text-xs font-semibold md:text-sm">
             {data.owner}
             <sup>nd</sup>
           </div>
