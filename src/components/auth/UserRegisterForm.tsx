@@ -4,21 +4,22 @@ import { baseURL } from "@/constants";
 import useHelper from "@/hooks/useHelper";
 import { User } from "@/types";
 import { customerInterestNotification } from "@/utils/commonServices";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const UserRegisterForm = ({ vId }: { vId: string }) => {
   const [user, setUser] = useState<User>();
-  const { updateInterestList, setUserData  } = useHelper();
+  const { updateInterestList, setUserData } = useHelper();
 
-  const router = useRouter()
+  const router = useRouter();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setUser((prev: any) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     if (user) {
       const response = await customerInterestNotification({
         name: user?.name,
@@ -26,9 +27,9 @@ const UserRegisterForm = ({ vId }: { vId: string }) => {
         productLink: `${baseURL}/details/${vId}`,
       });
       if (response.status === 200) {
-        setUserData(user)
+        setUserData(user);
         updateInterestList(vId);
-        router.push('/')
+        router.push("/", { scroll: false });
       }
     }
   };

@@ -16,7 +16,7 @@ const GalleryCard = ({ data }: { data: Vehicle }) => {
   const router = useRouter();
 
   const handleProductClick = () => {
-    router.push(`details/${data._id}`);
+    router.push(`details/${data._id}`, { scroll: false });
   };
 
   const handleIsInterested = async (id: string) => {
@@ -24,7 +24,7 @@ const GalleryCard = ({ data }: { data: Vehicle }) => {
     if (response) {
       setInterested(id);
     } else {
-      router.push(`/userRgister/${id}`);
+      router.push(`/userRgister/${id}`, { scroll: false });
     }
   };
   if (!data) return;

@@ -38,7 +38,7 @@ const ImageDetails = ({ data, index }: ImageDetailsProps) => {
     if (response) {
       setInterested(id);
     } else {
-      router.push(`/userRgister/${id}`);
+      router.push(`/userRgister/${id}`, { scroll: false });
     }
   };
   return (

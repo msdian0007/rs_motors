@@ -12,7 +12,7 @@ type MidCarouselProps = {
 const MidCarousel = ({ data, handleManually }: MidCarouselProps) => {
   const router = useRouter();
   const handleProductClick = () => {
-    router.push(`details/${data._id}`);
+    router.push(`details/${data._id}`, { scroll: false });
   };
   return (
     <div className="grid items-center justify-center gap-10 md:flex">
