@@ -13,10 +13,10 @@ const LeftCarousel = ({ newStocks }: { newStocks: newStock[] }) => {
           <div
             key={i}
             className={`${
-              i < mid ? "md:-mr-[75px] ml-0 md:mb-0 -mb-[55px]" : ""
+              i < mid ? "sm:-mr-[75px] ml-0 sm:mb-0 -mb-[65px]" : ""
             } `}
           >
-            <SideCarousel key={ele.coverImage} link={ele.coverImage} />
+            <SideCarousel key={ele.coverImage} link={ele.coverImage} index={i}/>
           </div>
         );
       })}

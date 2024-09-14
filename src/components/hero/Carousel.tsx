@@ -41,14 +41,14 @@ const Carousel = ({ data }: { data: newStock[] }) => {
 
   return (
     <div className="relative flex-center h-full gap-[100px] w-full overflow-hidden">
-      <div className="flex-center relative flex-col md:flex-row md:gap-[350px] lg:gap-[400px] gap-[275px]">
-        {/* LEFT */}
-        <div className="flex flex-col items-center md:flex-row">
+      <div className="flex-center relative flex-col sm:flex-row sm:gap-[300px] lg:gap-[300px] gap-[200px]">
+        {/* LEFT/TOP */}
+        <div className="flex flex-col items-center sm:flex-row">
           <LeftCarousel newStocks={newStocks} />
         </div>
 
-        {/* RIGHT */}
-        <div className="flex flex-col-reverse items-end w-full md:flex-row-reverse">
+        {/* RIGHT/BOTTOM */}
+        <div className="flex flex-col-reverse items-center sm:flex-row-reverse">
           <RightCarousel newStocks={newStocks} />
         </div>
       </div>
