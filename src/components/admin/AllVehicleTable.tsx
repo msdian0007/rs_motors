@@ -188,7 +188,7 @@ const AllVehicleTable = () => {
           <SpinnerLg />
         </ModalLayout>
       ) : (
-        <div className="px-1 pt-6 md:px-4 overflow-auto">
+        <div className="overflow-auto">
           <Table
             // components={components}
             // rowClassName={() => "editable-row"}
