@@ -1,12 +1,17 @@
 import React from "react";
 import Carousel from "./Carousel";
 import { getNewStock } from "@/utils/vehicleServices";
+import { unstable_cache } from "next/cache";
 
-export const revalidate = 3600
+export const revalidate = 3600;
 
-const fetchNewStock = async () => {
-  return await getNewStock();
-};
+const fetchNewStock = unstable_cache(
+  async () => {
+    return await getNewStock();
+  },
+  ["newStock"],
+  { revalidate: 3600, tags: ["newStock"] }
+);
 
 const Hero = async () => {
   const data = await fetchNewStock();

@@ -8,7 +8,6 @@ import BottomDetails from "./BottomDetails";
 import { Vehicle } from "@/types";
 
 const Details = ({ data }: { data: Vehicle }) => {
-  const [allImages, setAllImages] = useState([data.coverImage, ...data.images]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handelNext = (index: number) => {

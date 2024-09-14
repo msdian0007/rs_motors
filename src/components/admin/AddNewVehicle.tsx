@@ -9,15 +9,19 @@ import { addNewVehicle } from "@/utils/vehicleServices";
 import { redirect, useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { CgSpinner } from "react-icons/cg";
+import useFiles from "@/hooks/useFiles";
+import { SpinnerLg } from "../common/Spinner";
 
 const AddNewVehicle = () => {
   const [coverImage, setCoverImage] = useState<File>();
-  const [images, setImages] = useState<FileList>();
+  const [images, setImages] = useState<File[]>();
   const [formValue, setFormValue] = useState<Vehicle>();
   const [uploadCount, setUploadCount] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [imgCompLoading, setImgCompLoading] = useState(false);
 
   const { getListOfYear } = useHelper();
+  const { compressImage } = useFiles();
   const router = useRouter();
 
   const handleChange = (
@@ -27,23 +31,29 @@ const AddNewVehicle = () => {
     setFormValue((prev: any) => ({ ...prev, [name]: value }));
   };
 
-  const handleCoverImage = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleCoverImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target;
     if (files?.length) {
-      setCoverImage(files[0]);
+      setImgCompLoading(true);
+      const result = await compressImage(files);
+      setImgCompLoading(false);
+      setCoverImage(result[0]);
     }
   };
 
-  const handleImages = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImages = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target;
     if (files?.length) {
-      setImages(files);
+      setImgCompLoading(true);
+      const result = await compressImage(files);
+      setImgCompLoading(false);
+      setImages(result);
     }
   };
   const uploadCoverImage = async () => {
     const formData = new FormData();
     let response = "";
-    if (coverImage instanceof File) {
+    if (coverImage instanceof Blob) {
       formData.append("file", coverImage);
       await fileUploadOnS3(formData)
         .then((resp) => {
@@ -59,12 +69,12 @@ const AddNewVehicle = () => {
 
   const uploadImages = async () => {
     const urls: string[] = [];
-    if (images instanceof FileList) {
+    if (images?.length && images[0] instanceof Blob) {
       for (let index in images) {
-        const file = images[index];
-        if (!(file instanceof File)) {
-          continue;
-        }
+        // const file = images[index];
+        // if (!(file instanceof Blob)) {
+        //   continue;
+        // }
         const formData = new FormData();
         formData.append(`file`, images[index]);
         await fileUploadOnS3(formData)
@@ -117,6 +127,14 @@ const AddNewVehicle = () => {
               {uploadCount}/{images?.length ? images?.length + 1 : 0}
             </span>
             <span>Uploading Images and Data</span>
+          </div>
+        </ModalLayout>
+      ) : null}
+      {imgCompLoading ? (
+        <ModalLayout>
+          <div className="flex gap-4 items-center">
+            <SpinnerLg />
+            <span>Optimizing Images</span>
           </div>
         </ModalLayout>
       ) : null}
@@ -315,6 +333,7 @@ const AddNewVehicle = () => {
                         onChange={handleCoverImage}
                         id="coverImage"
                         type="file"
+                        accept="image/*"
                         className="sr-only"
                       />
                     </label>
@@ -357,6 +376,7 @@ const AddNewVehicle = () => {
                         onChange={handleImages}
                         id="images"
                         type="file"
+                        accept="image/*"
                         className="sr-only"
                         multiple
                       />
