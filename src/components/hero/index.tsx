@@ -3,14 +3,14 @@ import Carousel from "./Carousel";
 import { getNewStock } from "@/utils/vehicleServices";
 import { unstable_cache } from "next/cache";
 
-export const revalidate = 3600;
+export const revalidate = 60;
 
 const fetchNewStock = unstable_cache(
   async () => {
     return await getNewStock();
   },
   ["newStock"],
-  { revalidate: 3600, tags: ["newStock"] }
+  { revalidate: 60, tags: ["newStock"] }
 );
 
 const Hero = async () => {
