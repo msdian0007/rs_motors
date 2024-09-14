@@ -146,7 +146,7 @@ const AllVehicleTable = () => {
         ...tableParams,
         pagination: {
           ...tableParams.pagination,
-          total: response.data.count,
+          total: response.count,
         },
       });
     }

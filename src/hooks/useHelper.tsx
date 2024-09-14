@@ -1,4 +1,4 @@
-import { baseURL } from "@/constants";
+import { appUrl } from "@/constants";
 import { User } from "@/types";
 import { customerInterestNotification } from "@/utils/commonServices";
 import React from "react";
@@ -67,7 +67,7 @@ const useHelper = () => {
         const response = await customerInterestNotification({
           name: user?.name,
           phoneNumber: user?.phoneNumber,
-          productLink: `${baseURL}/details/${id}`,
+          productLink: `${appUrl}/details/${id}`,
         });
         if (response.status === 200) {
           updateInterestList(id);

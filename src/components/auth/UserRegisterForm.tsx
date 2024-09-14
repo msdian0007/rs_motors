@@ -1,6 +1,6 @@
 "use client";
 
-import { baseURL } from "@/constants";
+import { appUrl } from "@/constants";
 import useHelper from "@/hooks/useHelper";
 import { User } from "@/types";
 import { customerInterestNotification } from "@/utils/commonServices";
@@ -24,7 +24,7 @@ const UserRegisterForm = ({ vId }: { vId: string }) => {
       const response = await customerInterestNotification({
         name: user?.name,
         phoneNumber: user?.phoneNumber,
-        productLink: `${baseURL}/details/${vId}`,
+        productLink: `${appUrl}/details/${vId}`,
       });
       if (response.status === 200) {
         setUserData(user);

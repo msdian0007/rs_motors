@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import GalleryCard from "./GalleryCard";
 import useHelper from "@/hooks/useHelper";
 import { paginationParams, Vehicle } from "@/types";
-import { getAll, getAllWithPagination } from "@/utils/vehicleServices";
+import { getAllWithPagination } from "@/utils/vehicleServices";
 import { CustomButtonSm } from "../common/CustomButton";
 
 const Gallery = () => {
@@ -80,7 +80,8 @@ const Gallery = () => {
             {data.length > 0 &&
               data.map((v) => <GalleryCard key={v._id} data={v} />)}
           </div>
-          <div className="flex justify-end items-center self-end gap-4">
+          {/* PAGINATION ACTIONS */}
+          <div className="flex justify-end items-center self-end gap-4 py-4">
             <CustomButtonSm
               onClick={() => handlePrevious(currentPage - 1)}
               title="Previous"

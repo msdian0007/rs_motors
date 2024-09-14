@@ -3,6 +3,10 @@ export const baseURL = process.env.NODE_ENV === 'development'
     ? 'http://localhost:3000/api'
     : 'https://rs-motors.vercel.app/api'
 
+export const appUrl = process.env.NODE_ENV === 'development'
+    ? 'http://localhost:3000'
+    : 'https://rs-motors.vercel.app'
+
 export const multipartConfig = {
     headers: {
         'content-type': 'multipart/form-data',
