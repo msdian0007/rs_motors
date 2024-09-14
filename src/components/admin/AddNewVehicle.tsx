@@ -114,7 +114,7 @@ const AddNewVehicle = () => {
       await uploadFieldData(data);
     }
     setLoading(false);
-    router.push("/");
+    router.refresh();
   };
 
   return (
@@ -158,6 +158,7 @@ const AddNewVehicle = () => {
                 onChange={handleChange}
                 id="companyName"
                 type="text"
+                required
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               />
             </div>
@@ -175,6 +176,7 @@ const AddNewVehicle = () => {
                 onChange={handleChange}
                 id="modalName"
                 type="text"
+                required
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               />
             </div>
@@ -191,12 +193,13 @@ const AddNewVehicle = () => {
                 value={formValue?.modelYear}
                 onChange={handleChange}
                 id="selectModal"
+                required
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               >
                 <option selected disabled value="">
                   Select Modal
                 </option>
-                {getListOfYear().map((y) => (
+                {getListOfYear().toReversed().map((y) => (
                   <option key={y} value={y}>
                     {y}
                   </option>
@@ -216,12 +219,13 @@ const AddNewVehicle = () => {
                 value={formValue?.bsStage}
                 onChange={handleChange}
                 id="bsStage"
+                required
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               >
                 <option selected disabled value="">
                   Select BS-Stage
                 </option>
-                {bsStages.map((obj) => (
+                {bsStages.toReversed().map((obj) => (
                   <option key={obj.id} value={obj.stage}>
                     {obj.stage}
                   </option>
@@ -241,6 +245,7 @@ const AddNewVehicle = () => {
                 value={formValue?.owner}
                 onChange={handleChange}
                 id="selectOwner"
+                required
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               >
                 <option selected disabled value="">
@@ -266,6 +271,7 @@ const AddNewVehicle = () => {
                 onChange={handleChange}
                 id="milage"
                 type="number"
+                required
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               />
             </div>
@@ -280,6 +286,7 @@ const AddNewVehicle = () => {
                 onChange={handleChange}
                 id="price"
                 type="number"
+                required
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               />
             </div>
@@ -297,6 +304,7 @@ const AddNewVehicle = () => {
                 onChange={handleChange}
                 id="sellingPrice"
                 type="number"
+                required
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               />
             </div>
@@ -334,6 +342,7 @@ const AddNewVehicle = () => {
                         id="coverImage"
                         type="file"
                         accept="image/*"
+                        required
                         className="sr-only"
                       />
                     </label>
@@ -377,6 +386,7 @@ const AddNewVehicle = () => {
                         id="images"
                         type="file"
                         accept="image/*"
+                        required
                         className="sr-only"
                         multiple
                       />
