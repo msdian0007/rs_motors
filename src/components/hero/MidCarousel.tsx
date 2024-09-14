@@ -15,14 +15,14 @@ const MidCarousel = ({ data, handleManually }: MidCarouselProps) => {
     router.push(`details/${data._id}`, { scroll: false });
   };
   return (
-    <div className="grid items-center justify-center gap-10 md:flex">
+    <div className="grid items-center justify-center gap-10 sm:flex">
       <FaAngleLeft
-        className="mx-auto text-4xl rotate-90 cursor-pointer md:rotate-0 text-light hover:text-primary"
+        className="mx-auto text-4xl rotate-90 cursor-pointer sm:rotate-0 text-light hover:text-primary"
         onClick={() => handleManually("R")}
       />
       <div
         onClick={handleProductClick}
-        className="shadow-red__md bg-light relative cursor-pointer hover:scale-[1.02] transition ease-in-out delay-100 duration-150 overflow-auto w-[65vw] h-[65vw] md:w-[45vw] md:h-[45vw] lg:w-[30vw] lg:h-[30vw] rounded-full "
+        className="shadow-red__md bg-light relative cursor-pointer hover:scale-[1.02] transition ease-in-out delay-100 duration-150 overflow-auto size-[78vw] sm:size-[45vw] md:size-[45vw] lg:size-[32vw] rounded-full "
       >
         <Image
           src={data.coverImage}
@@ -34,7 +34,7 @@ const MidCarousel = ({ data, handleManually }: MidCarouselProps) => {
         />
       </div>
       <FaAngleRight
-        className="mx-auto text-4xl rotate-90 cursor-pointer md:rotate-0 text-light hover:text-primary"
+        className="mx-auto text-4xl rotate-90 cursor-pointer sm:rotate-0 text-light hover:text-primary"
         onClick={() => handleManually("F")}
       />
     </div>

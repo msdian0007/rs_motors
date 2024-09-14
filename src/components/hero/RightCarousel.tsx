@@ -11,10 +11,10 @@ const RightCarousel = ({ newStocks }: { newStocks: newStock[] }) => {
         <div
           key={i}
           className={`${
-            i < newStocks.length ? "md:-ml-[75px] ml-0 md:mt-0 -mt-[55px]" : ""
+            i < newStocks.length ? "sm:-ml-[75px] ml-0 sm:mt-0 -mt-[65px]" : ""
           } `}
         >
-          <SideCarousel key={i} link={ele.coverImage} />
+          <SideCarousel key={i} link={ele.coverImage} index={i}/>
         </div>
       ))}
     </>
