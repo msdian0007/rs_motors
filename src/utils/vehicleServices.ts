@@ -1,16 +1,24 @@
+import { getRandomVehicleParams, TableParams } from "@/components/admin/AllVehicleTable";
 import { baseURL, jsonConfig } from "@/constants"
-import { newStock, Vehicle } from "@/types"
+import { newStock, paginationParams, Vehicle } from "@/types"
 import axios from "axios"
+import qs from 'qs'
 
 const url = `${baseURL}/vehicles`
+
+interface getAllProps {
+    data: Vehicle[];
+    count: number;
+    totalPages: number
+}
 
 const addNewVehicle = async (vehicle: Vehicle) => {
     return await axios.post(`${url}/addNewVehicle`, vehicle, jsonConfig)
 }
 
-const getAll = async (): Promise<Vehicle[]> => {
+const getAll = async (): Promise<getAllProps> => {
     const response = await axios.get(`${url}/`, jsonConfig)
-    return response.data.data
+    return response.data
 }
 
 const getVehicleDetail = async (id: string): Promise<Vehicle> => {
@@ -23,16 +31,15 @@ const getNewStock = async (): Promise<newStock[]> => {
     return response.data.data
 }
 
-// const allVehicleTable = async () => {
-//     const response = await axios.get(
-//         `${baseURL}/vehicles/pagination?${qs.stringify(
-//           getRandomUserParams(tableParams)
-//         )}`
-//       );
-// }
-
 const markSoldUnsold = async (id: string) => {
     return await axios.put(`${url}/markSoldUnsold`, { id }, jsonConfig)
 }
 
-export { getAll, getVehicleDetail, getNewStock, addNewVehicle, markSoldUnsold }
+const getAllWithPagination = async (params: paginationParams) => {
+    const response = await axios.get(
+        `${baseURL}/vehicles/pagination?${qs.stringify(params)}`
+    );
+    return response.data
+}
+
+export { getAll, getVehicleDetail, getNewStock, addNewVehicle, markSoldUnsold, getAllWithPagination }

@@ -1,34 +1,14 @@
 "use client";
 
-import { Vehicle } from "@/types";
+import { paginationParams, Vehicle } from "@/types";
 import { GetProp, MenuProps, Table, TableProps, Tag } from "antd";
 import { SorterResult } from "antd/es/table/interface";
 import React, { useEffect, useState } from "react";
-import qs from "qs";
-import { baseURL } from "@/constants";
-import axios from "axios";
 import Link from "next/link";
 import useHelper from "@/hooks/useHelper";
-import Dropdown from "antd/es/dropdown/dropdown";
-import { CiMenuKebab } from "react-icons/ci";
-import { markSoldUnsold } from "@/utils/vehicleServices";
+import { getAllWithPagination, markSoldUnsold } from "@/utils/vehicleServices";
 import { ModalLayout } from "../layout/Modal";
 import { SpinnerLg } from "../common/Spinner";
-
-// const dataSource = [
-//   {
-//     key: "1",
-//     name: "Mike",
-//     age: 32,
-//     address: "10 Downing Street",
-//   },
-//   {
-//     key: "2",
-//     name: "John",
-//     age: 42,
-//     address: "10 Downing Street",
-//   },
-// ];
 
 type ColumnsType<T extends object = object> = TableProps<T>["columns"];
 type TablePaginationConfig = Exclude<
@@ -36,14 +16,14 @@ type TablePaginationConfig = Exclude<
   boolean
 >;
 
-interface TableParams {
+export interface TableParams {
   pagination?: TablePaginationConfig;
   sortField?: SorterResult<any>["field"];
   sortOrder?: SorterResult<any>["order"];
   filters?: Parameters<GetProp<TableProps, "onChange">>[1];
 }
 
-const getRandomUserParams = (params: TableParams) => ({
+export const getRandomVehicleParams = (params: TableParams) => ({
   results: params.pagination?.pageSize,
   page: params.pagination?.current,
   ...params,
@@ -154,13 +134,13 @@ const AllVehicleTable = () => {
 
   const fetchData = async () => {
     setLoading(true);
-    const response = await axios.get(
-      `${baseURL}/vehicles/pagination?${qs.stringify(
-        getRandomUserParams(tableParams)
-      )}`
-    );
+    let params: paginationParams = {
+      page: tableParams.pagination?.current ?? 0,
+      limit: tableParams.pagination?.pageSize ?? 0,
+    };
+    const response = await getAllWithPagination(params);
     if (response.data) {
-      setData(response.data.data);
+      setData(response.data);
       setLoading(false);
       setTableParams({
         ...tableParams,

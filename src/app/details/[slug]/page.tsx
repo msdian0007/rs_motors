@@ -11,8 +11,8 @@ const fetchVehicleDetails = async (id: string) => {
 };
 
 export async function generateStaticParams() {
-  let data = await getAll();
-  return data.map((obj) => {
+  let response = await getAll();
+  return response.data.map((obj) => {
     id: obj._id;
   });
 }

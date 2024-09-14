@@ -113,8 +113,8 @@ const AddNewVehicle = () => {
       };
       await uploadFieldData(data);
     }
-    setLoading(false);
     router.refresh();
+    setLoading(false);
   };
 
   return (

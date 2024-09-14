@@ -24,6 +24,10 @@ const useHelper = () => {
         isScrolled = false;
       }
     },
+    paginationScrollToGallery: () => {
+      const ele = document.getElementById("gallery");
+      ele?.scrollIntoView({ behavior: "smooth" });
+    },
     getListOfYear: (): number[] => {
       let years = [];
       for (let i = 2000; i <= new Date().getFullYear(); i++) {
