@@ -100,7 +100,7 @@ const AllVehicleTable = () => {
               onClick={() => handleSoldUnsold(_id)}
             >
               <Tag color={isSold ? "green-inverse" : "orange-inverse"}>
-                {isSold ? "SOLD" : "PENDING"}
+                {isSold ? "SOLD" : "STOCK"}
               </Tag>
             </div>
           )}

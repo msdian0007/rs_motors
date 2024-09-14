@@ -28,8 +28,9 @@ const GalleryCard = ({ data }: { data: Vehicle }) => {
     }
   };
   if (!data) return;
+  console.log(data.isSold)
   return (
-    <div className="flex flex-col md:gap-2 bg-light md:p-2 rounded-md w-[48%] h-[356px] sm:w-[275px] sm:h-[405px]">
+    <div className="relative flex flex-col md:gap-2 bg-light md:p-2 rounded-md w-[48%] h-[356px] sm:w-[275px] sm:h-[405px]">
       <div
         onClick={handleProductClick}
         className="w-full cursor-pointer max-h-[175px] min-h-[175px] sm:max-h-[200px] sm:min-h-[200px] relative"
@@ -68,7 +69,7 @@ const GalleryCard = ({ data }: { data: Vehicle }) => {
               // onClick={() => handleIsInterested(data?._id)}
               className="w-full py-2 rounded-md text-light bg-green-600 flex-center"
             >
-              <FaCheckCircle className="text-2xl"/>
+              <FaCheckCircle className="text-2xl" />
             </button>
           ) : (
             <button
@@ -80,8 +81,21 @@ const GalleryCard = ({ data }: { data: Vehicle }) => {
           )}
         </div>
       </div>
+      {data.isSold && <SoldLabel />}
     </div>
   );
 };
 
 export default GalleryCard;
+
+const SoldLabel = () => {
+  return (
+    <>
+      <div className="absolute inset-0 bg-black/70 flex-center">
+        <div className="bg-black/80 w-full text-center py-2 text-2xl">
+          SOLD!
+        </div>
+      </div>
+    </>
+  );
+};
