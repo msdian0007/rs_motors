@@ -2,6 +2,8 @@ import React from "react";
 import Carousel from "./Carousel";
 import { getNewStock } from "@/utils/vehicleServices";
 
+export const revalidate = 3600
+
 const fetchNewStock = async () => {
   return await getNewStock();
 };

@@ -9,7 +9,7 @@ const RightCarousel = ({ newStocks }: { newStocks: newStock[] }) => {
     <>
       {rightStock.toReversed().map((ele, i) => (
         <div
-          key={i}
+          key={ele._id}
           className={`${
             i < newStocks.length ? "sm:-ml-[75px] ml-0 sm:mt-0 -mt-[65px]" : ""
           } `}

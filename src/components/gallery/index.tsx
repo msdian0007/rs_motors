@@ -32,7 +32,7 @@ const Gallery = () => {
     <div className="min-h-[100vh] md:p-8" id="gallery">
       <div className="flex flex-wrap justify-center gap-1 md:gap-4">
         {/* CARD */}
-        {data.length > 0 && data.map((v) => <GalleryCard data={v} />)}
+        {data.length > 0 && data.map((v) => <GalleryCard key={v._id} data={v} />)}
       </div>
     </div>
   );

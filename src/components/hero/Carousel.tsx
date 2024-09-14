@@ -61,8 +61,8 @@ const Carousel = ({ data }: { data: newStock[] }) => {
         <div onClick={() => setIsManually(true)}>
           <MidCarousel data={newStocks[mid]} handleManually={handleManually} />
         </div>
-        <div className="items-center w-full py-2 text-xl text-center text-primary bg-black/80">
-          {newStocks[mid]?.brand.toUpperCase()} - <span className="text-white"> {newStocks[mid]?.modelName}</span>
+        <div className="flex justify-center items-center w-full py-2 text-xl text-center text-primary bg-black/80">
+          {newStocks[mid]?.brand.toUpperCase()}<span className="text-light border-[1px] px-2 ml-1 font-semibold rounded-xl bg-secondary"> {newStocks[mid]?.modelName}</span>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import useHelper from "@/hooks/useHelper";
 import { Vehicle } from "@/types";
@@ -14,16 +14,15 @@ type ImageDetailsProps = {
 };
 
 const ImageDetails = ({ data, index }: ImageDetailsProps) => {
-
   const [interested, setInterested] = useState("");
   const [allImages, setAllImages] = useState([data.coverImage, ...data.images]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isClient, setIsClient] = useState(false)
- 
+  const [isClient, setIsClient] = useState(false);
+
   useEffect(() => {
-    setIsClient(true)
-  }, [])
- 
+    setIsClient(true);
+  }, []);
+
   const router = useRouter();
 
   const { calcDiscount, updateIsInterested, isAlreadyInterested } = useHelper();
@@ -53,16 +52,20 @@ const ImageDetails = ({ data, index }: ImageDetailsProps) => {
             {data.brand}-{data.modelName}
           </span>
         </div>
-        <div className="h-[400px] w-full relative bg-light rounded-md">
-          <Image
-            src={allImages[currentIndex]}
-            alt="product_image"
-            sizes="auto"
-            fill
-            priority
-            className="object-contain"
-          />
-        </div>
+        {allImages.map((img, i) => {
+          return (
+            <div key={img} className={`h-[400px] w-full relative bg-light rounded-md ${i !== currentIndex && 'hidden'}`}>
+              <Image
+                src={img}
+                alt="product_image"
+                sizes="auto"
+                fill
+                priority
+                className="object-contain"
+              />
+            </div>
+          );
+        })}
         <div className="flex-center">
           <span className="font-semibold text-2xl">
             ₹{data.sellingPrice.toLocaleString()}
@@ -75,12 +78,13 @@ const ImageDetails = ({ data, index }: ImageDetailsProps) => {
           </span>
         </div>
         <div className="flex-center">
-          {isClient && interested === data._id || isAlreadyInterested(data?._id ?? " ") ? (
+          {(isClient && interested === data._id) ||
+          isAlreadyInterested(data?._id ?? " ") ? (
             <button
               disabled
               className="w-full py-2 rounded-md text-light bg-green-600 flex-center"
             >
-              <FaCheckCircle className="text-2xl"/>
+              <FaCheckCircle className="text-2xl" />
             </button>
           ) : (
             <button
