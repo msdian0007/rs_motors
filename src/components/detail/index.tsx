@@ -16,7 +16,7 @@ const Details = ({ data }: { data: Vehicle }) => {
   };
 
   return (
-    <div className="min-h-[calc(100vh)] md:flex md:justify-center md:items-center grid gap-4 px-2 md:px-10">
+    <div className="min-h-[calc(100vh)] md:flex md:justify-center md:items-center grid gap-4 px-2 py-2 md:px-10">
       <div className="w-[90%] hidden md:flex flex-col gap-6 items-start">
         <LeftSideDetails data={data} />
       </div>

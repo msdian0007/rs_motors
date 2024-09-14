@@ -1,4 +1,4 @@
-import { Gallery, Hero, Navbar } from "@/components";
+import { Footer, Gallery, Hero, Navbar } from "@/components";
 import { Suspense } from "react";
 import Loading from "./loading";
 
@@ -10,6 +10,7 @@ export default async function Home() {
       <Suspense fallback={<Loading />}>
         <Gallery />
       </Suspense>
+      <Footer />
     </main>
   );
 }

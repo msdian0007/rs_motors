@@ -5,7 +5,7 @@ import GalleryCard from "./GalleryCard";
 import useHelper from "@/hooks/useHelper";
 import { paginationParams, Vehicle } from "@/types";
 import { getAllWithPagination } from "@/utils/vehicleServices";
-import { CustomButtonSm } from "../common/CustomButton";
+import { CustomButton } from "../common/CustomButton";
 
 const Gallery = () => {
   const [data, setData] = useState<Vehicle[]>([]);
@@ -67,7 +67,6 @@ const Gallery = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
   return (
     <div
       className="min-h-[100vh] flex flex-col justify-around md:p-8"
@@ -81,14 +80,14 @@ const Gallery = () => {
               data.map((v) => <GalleryCard key={v._id} data={v} />)}
           </div>
           {/* PAGINATION ACTIONS */}
-          <div className="flex justify-end items-center self-end gap-4 py-4">
-            <CustomButtonSm
+          <div className="flex justify-center items-center gap-4 pt-8 pr-2">
+            <CustomButton
               onClick={() => handlePrevious(currentPage - 1)}
               title="Previous"
               loading={prevLoading}
             />
             <span>{`Page ${currentPage} of ${totalPages}`}</span>
-            <CustomButtonSm
+            <CustomButton
               onClick={() => handleNext(currentPage + 1)}
               title="Next"
               loading={nextLoading}

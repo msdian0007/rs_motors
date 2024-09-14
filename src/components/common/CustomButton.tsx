@@ -9,7 +9,7 @@ type customButtonTypes = {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
-const CustomButtonSm = (data: customButtonTypes) => {
+const CustomButton = (data: customButtonTypes) => {
     let size = ''
     if(data.size === 'lg'){
         size = 'py-4 px-4'
@@ -32,4 +32,4 @@ const CustomButtonSm = (data: customButtonTypes) => {
   );
 };
 
-export { CustomButtonSm };
+export { CustomButton };
