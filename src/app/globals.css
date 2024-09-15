@@ -61,11 +61,10 @@ body {
   background-color: var(--secondary);
   color: var(--light);
 }
-.ant-table-tbody .ant-table-row:hover .ant-table-cell{
+.ant-table-tbody .ant-table-row:hover .ant-table-cell {
   background-color: var(--secondary);
   color: var(--primary);
 }
-
 
 /* HIDE SCROLL-BAR */
 * {
@@ -76,3 +75,4 @@ body {
 *::-webkit-scrollbar {
   display: none;
 }
+

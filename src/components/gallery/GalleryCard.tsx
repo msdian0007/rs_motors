@@ -91,10 +91,11 @@ export default GalleryCard;
 const SoldLabel = () => {
   return (
     <>
-      <div className="absolute inset-0 bg-black/70 flex-center">
-        <div className="bg-black/80 w-full text-center py-2 text-2xl">
+      <div className="absolute inset-0 bg-black/40 flex-center">
+        <div className=" bg-secondary/80 w-full text-center text-light font-semibold text-2xl">
           SOLD!
         </div>
+        <div></div>
       </div>
     </>
   );

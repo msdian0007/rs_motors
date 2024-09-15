@@ -14,15 +14,15 @@ type ErrorResponse = {
 export async function GET(req: NextRequest,) {
     try {
         const searchParams = req.nextUrl.searchParams
-        const limit = searchParams.get('limit')
-        const page = searchParams.get('page')
+        // const limitInString = searchParams.get('limit')
+        // const pageInString = searchParams.get('page')
+        let limit = parseInt(searchParams.get('limit') ?? '')
+        let page = parseInt(searchParams.get('page') ?? '')
         if (!limit && !page) return Response.json({ error: 'Failed to fetch data' })
         await dbConnect()
-    console.log(page)
-    console.log(limit)
         const count = await vehicleModal.find().countDocuments()
-        const data = await vehicleModal.find().skip((parseInt(page ?? '0') - 1) * parseInt(limit ?? '0')).limit(parseInt(limit ?? '0'))
-        return Response.json({ data, count, totalPages: Math.ceil(count / parseInt(limit ?? '0')) })
+        const data = await vehicleModal.find().sort({ _id: -1 }).skip((page - 1) * limit).limit(limit)
+        return Response.json({ data, count, totalPages: Math.ceil(count / limit) })
     } catch (err) {
         return Response.json({ error: 'Failed to fetch data' })
     }

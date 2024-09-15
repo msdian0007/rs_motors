@@ -9,7 +9,7 @@ export async function GET(req: Request,) {
     // return Response.json(JSON.stringify(response))
     try {
         await dbConnect()
-        const data = await vehicleModal.find({}, { coverImage: 1, brand: 1, modelName: 1 }).sort({ _id: -1 }).limit(11)
+        const data = await vehicleModal.find({ isSold: false }, { coverImage: 1, brand: 1, modelName: 1 }).sort({ _id: -1 }).limit(11)
         return Response.json({ data })
     } catch (err: any) {
         return Response.json({ error: 'Failed to fetch data' })

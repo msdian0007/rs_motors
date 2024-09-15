@@ -69,10 +69,10 @@ const Gallery = () => {
   }, []);
   return (
     <div
-      className="min-h-[100vh] flex flex-col justify-around md:p-8"
+      className="min-h-[100vh] flex flex-col justify-around md:px-8"
       id="gallery"
     >
-      {data && (
+      {data.length > 0 && (
         <>
           <div className="flex flex-wrap justify-center gap-1 md:gap-3">
             {/* CARD */}
@@ -80,16 +80,18 @@ const Gallery = () => {
               data.map((v) => <GalleryCard key={v._id} data={v} />)}
           </div>
           {/* PAGINATION ACTIONS */}
-          <div className="flex justify-center items-center gap-4 pt-8 pr-2">
+          <div className="flex justify-end items-center gap-4 sm:my-8 my-4 pr-2">
             <CustomButton
               onClick={() => handlePrevious(currentPage - 1)}
               title="Previous"
+              size="sm"
               loading={prevLoading}
             />
             <span>{`Page ${currentPage} of ${totalPages}`}</span>
             <CustomButton
               onClick={() => handleNext(currentPage + 1)}
               title="Next"
+              size="sm"
               loading={nextLoading}
             />
           </div>
