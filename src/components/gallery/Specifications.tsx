@@ -1,3 +1,4 @@
+import useHelper from "@/hooks/useHelper";
 import { Vehicle } from "@/types";
 import React from "react";
 import { GiLifeBar } from "react-icons/gi";
@@ -7,6 +8,7 @@ import { MdOutlinePolicy } from "react-icons/md";
 import { PiEngine } from "react-icons/pi";
 
 const Specifications = ({ data }: { data: Vehicle }) => {
+  const { ageCalculator } = useHelper();
   return (
     <>
       <div className="grid w-full grid-cols-4 rounded-md bg-gray-400/20 ">
@@ -27,9 +29,12 @@ const Specifications = ({ data }: { data: Vehicle }) => {
           <GiLifeBar className="mx-auto text-base text-red-600 md:text-lg " />
         </div>
         <div className="grid col-span-3 text-center">
-          <div className="text-xs my-auto md:text-sm font-sans text-red-600 ">Age</div>
+          <div className="text-xs my-auto md:text-sm font-sans text-red-600 ">
+            Age
+          </div>
           <div className="w-full my-auto text-xs font-semibold md:text-sm">
-            {data.modelYear}
+            {ageCalculator(data.modelYear)}
+            <span className=" text-xs md:text-sm">-year</span>
           </div>
         </div>
       </div>
@@ -41,7 +46,9 @@ const Specifications = ({ data }: { data: Vehicle }) => {
           <div className="text-xs my-auto md:text-sm font-sans text-gray-600 ">
             BS-Stage
           </div>
-          <div className="w-full my-auto text-xs font-semibold md:text-sm">{data?.bsStage}</div>
+          <div className="w-full my-auto text-xs font-semibold md:text-sm">
+            {data?.bsStage}
+          </div>
         </div>
       </div>
       <div className="grid w-full grid-cols-4 rounded-md bg-gray-400/20 ">
