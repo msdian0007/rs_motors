@@ -159,6 +159,7 @@ const AddNewVehicle = () => {
                 id="companyName"
                 type="text"
                 required
+                placeholder="eg. Yamaha"
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               />
             </div>
@@ -177,6 +178,7 @@ const AddNewVehicle = () => {
                 id="modalName"
                 type="text"
                 required
+                placeholder="eg. R-15"
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               />
             </div>
@@ -272,6 +274,7 @@ const AddNewVehicle = () => {
                 id="milage"
                 type="number"
                 required
+                placeholder="eg. 60"
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               />
             </div>
@@ -287,6 +290,7 @@ const AddNewVehicle = () => {
                 id="price"
                 type="number"
                 required
+                placeholder="eg. 95000"
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               />
             </div>
@@ -305,13 +309,14 @@ const AddNewVehicle = () => {
                 id="sellingPrice"
                 type="number"
                 required
+                placeholder="eg. 92000"
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               />
             </div>
             {/* COVER IMAGE */}
             <div>
               <label className="block text-sm font-medium text-white">
-                Cover Image
+                Cover Image: <span className="text-primary">{coverImage && 1}</span>
               </label>
               <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
                 <div className="space-y-1 text-center">
@@ -332,7 +337,7 @@ const AddNewVehicle = () => {
                   <div className="flex text-sm text-gray-600">
                     <label
                       htmlFor="coverImage"
-                      className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+                      className="relative cursor-pointer bg-white hover:bg-primary hover:scale-110 rounded-md font-medium text-indigo-600 hover:text-light focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
                     >
                       <span className="p-2">Upload a file</span>
                       <input
@@ -348,14 +353,14 @@ const AddNewVehicle = () => {
                     </label>
                     <p className="pl-1 text-white">or drag and drop</p>
                   </div>
-                  <p className="text-xs text-white">PNG, JPG, GIF up to 2MB</p>
+                  <p className="text-xs text-white">PNG, JPG, GIF up to 1MB</p>
                 </div>
               </div>
             </div>
             {/* IMAGES */}
             <div>
               <label className="block text-sm font-medium text-white">
-                Images
+                Images: <span className="text-primary">{images?.length}</span>
               </label>
               <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
                 <div className="space-y-1 text-center">
@@ -376,9 +381,9 @@ const AddNewVehicle = () => {
                   <div className="flex text-sm text-gray-600">
                     <label
                       htmlFor="images"
-                      className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+                      className="relative cursor-pointer bg-white hover:bg-primary hover:scale-110 rounded-md font-medium text-indigo-600 hover:text-light focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
                     >
-                      <span className="p-2">Upload a file</span>
+                      <span className="p-2 ">Upload a file</span>
                       <input
                         name="images"
                         // value={images}
@@ -393,7 +398,7 @@ const AddNewVehicle = () => {
                     </label>
                     <p className="pl-1 text-white">or drag and drop</p>
                   </div>
-                  <p className="text-xs text-white">PNG, JPG, GIF up to 2MB</p>
+                  <p className="text-xs text-white">PNG, JPG, GIF up to 1MB</p>
                 </div>
               </div>
             </div>
