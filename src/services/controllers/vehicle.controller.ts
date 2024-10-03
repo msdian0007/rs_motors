@@ -1,4 +1,4 @@
-import vehicleModal from "@/services/modals"
+import vehicleModal from "@/services/modals/vehicleSchema"
 
 const create = async (req: Request) => {
     try {

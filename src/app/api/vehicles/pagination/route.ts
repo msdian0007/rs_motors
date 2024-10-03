@@ -1,5 +1,5 @@
 import dbConnect from "@/app/lib/db";
-import vehicleModal from "@/services/modals";
+import vehicleModal from "@/services/modals/vehicleSchema";
 import { Vehicle } from "@/types";
 import { type NextRequest } from 'next/server'
 
@@ -14,8 +14,6 @@ type ErrorResponse = {
 export async function GET(req: NextRequest,) {
     try {
         const searchParams = req.nextUrl.searchParams
-        // const limitInString = searchParams.get('limit')
-        // const pageInString = searchParams.get('page')
         let limit = parseInt(searchParams.get('limit') ?? '')
         let page = parseInt(searchParams.get('page') ?? '')
         if (!limit && !page) return Response.json({ error: 'Failed to fetch data' })

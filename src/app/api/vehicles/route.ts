@@ -1,6 +1,5 @@
 import dbConnect from "@/app/lib/db";
-// import { vehicleControllers } from "@/services/controllers"
-import vehicleModal from "@/services/modals";
+import vehicleModal from "@/services/modals/vehicleSchema";
 import { Vehicle } from "@/types";
 
 type Data = {
@@ -12,8 +11,6 @@ type ErrorResponse = {
 }
 
 export async function GET(req: Request,) {
-    // const response = await vehicleControllers.getAll()
-    // return Response.json(JSON.stringify(response))
     try {
         await dbConnect()
         const data = await vehicleModal.find({})
