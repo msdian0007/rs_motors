@@ -1,3 +1,4 @@
+import bcrypt from 'bcrypt'
 import dbConnect from "@/app/lib/db"
 import adminModal from "@/services/modals/userSchema"
 
@@ -12,9 +13,9 @@ export async function POST(req: Request,) {
         if (!user)
             return new Response("Invalid username or password", { status: 400 })
 
-        // let validPassword = await bcrypt.compare(password, user.password);
-        // if (!validPassword)
-        //     return res.status(400).json({ message: "Invalid Number or password" });
+        let validPassword = await bcrypt.compare(body.password, user.password);
+        if (!validPassword)
+            return new Response("Invalid Number or password", { status: 400 })
 
         // const token = await createToken(user._id);
 

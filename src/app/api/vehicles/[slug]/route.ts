@@ -1,5 +1,5 @@
 import dbConnect from "@/app/lib/db";
-import vehicleModal from "@/services/modals";
+import vehicleModal from "@/services/modals/vehicleSchema";
 
 export async function GET(req: Request, { params }: { params: { slug: string } }) {
     try {

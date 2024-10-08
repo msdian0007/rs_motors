@@ -1,10 +1,7 @@
-// import { vehicleControllers } from "@/services/controllers"
 import dbConnect from "@/app/lib/db"
-import vehicleModal from "@/services/modals"
+import vehicleModal from "@/services/modals/vehicleSchema"
 
 export async function POST(req: Request,) {
-    // const response = await vehicleControllers.create(req)
-    // return Response.json({response})
     try {
         await dbConnect()
         const body = await req.json()

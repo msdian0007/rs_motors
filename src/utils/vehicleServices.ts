@@ -1,4 +1,3 @@
-import { getRandomVehicleParams, TableParams } from "@/components/admin/AllVehicleTable";
 import { baseURL, jsonConfig } from "@/constants"
 import { newStock, paginationParams, Vehicle } from "@/types"
 import axios from "axios"
