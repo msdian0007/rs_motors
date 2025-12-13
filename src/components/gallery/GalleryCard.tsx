@@ -28,7 +28,6 @@ const GalleryCard = ({ data }: { data: Vehicle }) => {
     }
   };
   if (!data) return;
-  console.log(data.isSold)
   return (
     <div className="relative flex flex-col md:gap-2 bg-light md:p-2 rounded-md w-[48%] h-[356px] sm:w-[275px] sm:h-[405px]">
       <div
