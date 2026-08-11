@@ -45,6 +45,7 @@ const SignInForm = () => {
                 // value={user?.phoneNumber}
                 // onChange={handleChange}
                 id="userName"
+                defaultValue={"admin"}
                 type="text"
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
               />
@@ -59,6 +60,7 @@ const SignInForm = () => {
               </label>
               <input
                 name="password"
+                defaultValue={"admin"}
                 // value={user?.password}
                 // onChange={handleChange}
                 id="password"
